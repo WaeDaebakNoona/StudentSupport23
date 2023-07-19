@@ -15,6 +15,7 @@ public class Student {
     private String gradeClass;
     private String username;
 
+    
     public Student(String name, String surname, String password, String gradeClass, String username) {
         this.name = name;
         this.surname = surname;
@@ -63,7 +64,10 @@ public class Student {
         this.username = username;
     }
     
-    
+    public String getFullName(){
+        String fullName = getName() + " " + getSurname();
+        return fullName;
+    }
     
     
 }

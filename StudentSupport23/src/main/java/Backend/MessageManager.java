@@ -15,6 +15,7 @@ import java.sql.SQLException;
 public class MessageManager {
     
     private Message[] messages;
+
     private int messagesSize;
     private DB db;
     
@@ -37,6 +38,16 @@ public class MessageManager {
             output += "\n";
         }
         return output;
+    }
+    
+    public void addAdminMessage(Message m, Student s ) throws ClassNotFoundException, SQLException{
+        //adds message from admin into adminmessages table
+        //get username: username is their name and surname @reddam.house
+        db = new DB();
+        String query = "INSERT INTO naritaaDB.AdminMessagestbl(Student, Message)Values('" + s.getUsername()+ "','" + m.getNote() + "');";
+        db.update(query);
+        messages = new Message[messagesSize];
+        messagesSize++;
     }
     
     
