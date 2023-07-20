@@ -17,6 +17,15 @@ import java.sql.SQLException;
  * @author Cliftonb
  */
 public class DB {
+    // SINGLETON PATTERN
+    //1.   DB.init(); //initialize database
+    //2.   DB.instance.query(string);
+    //3.   DB.instance.update(string);
+    
+    //CANT DO THIS (outside this class as constructor is private)
+    //4.   DB db = new DB();
+    
+        public static DB instance;
 
 	private static final String driver = "com.mysql.cj.jdbc.Driver";
 	private static final String url = "jdbc:mysql://102.130.115.69:3306/naritaaDB";
@@ -30,7 +39,14 @@ public class DB {
 	private ResultSet result;
 	private Connection connection;
 
-	public DB() throws ClassNotFoundException, SQLException {
+        public static void init() throws ClassNotFoundException, SQLException{
+            if(instance == null){
+                instance = new DB();
+            }
+        }
+        
+        //can only call constructor from within class
+	private DB() throws ClassNotFoundException, SQLException {
 		//remember to add the mysql-connector-java library to the dependency list
 		Class.forName(driver);
 		System.out.println("DB: Database driver loaded");

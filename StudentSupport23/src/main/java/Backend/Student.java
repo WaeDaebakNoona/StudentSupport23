@@ -68,6 +68,13 @@ public class Student {
         String fullName = getName() + " " + getSurname();
         return fullName;
     }
-    
+    //using name and surname of the student to create the reddam email which is their username
+    public String createUsername(String name, String surname){
+        String output = "";
+        String fname = name.toLowerCase();
+        String lname = surname.toLowerCase();
+        output = fname + "." + lname + "@reddam.house";
+        return output;
+    }
     
 }

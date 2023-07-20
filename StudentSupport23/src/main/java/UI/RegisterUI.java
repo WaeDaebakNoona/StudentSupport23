@@ -4,6 +4,11 @@
  */
 package UI;
 
+import backend.DB;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Narita
@@ -15,6 +20,13 @@ public class RegisterUI extends javax.swing.JFrame {
      */
     public RegisterUI() {
         initComponents();
+        try {
+            DB.init();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RegisterUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setLocationRelativeTo(null);
     }
 

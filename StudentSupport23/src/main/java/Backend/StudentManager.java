@@ -5,8 +5,10 @@
 package Backend;
 
 import backend.DB;
+import java.awt.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,13 +17,11 @@ import java.sql.SQLException;
 public class StudentManager {
     private Student[] students = new Student[100];
     private int studentSize = 0;
-    private DB db;
     
     public void addStudents(Student s) throws SQLException, ClassNotFoundException{
-        db = new DB();
         String query = "INSERT INTO `naritaaDB`.`Studentstbl` (`Name`, `Surname`, `Grade`, `Username`, `Password`)"
                 + " VALUES (' " + s.getName() + "', '" + s.getSurname() + "', '" + s.getGradeClass()+ "', '" + s.getUsername() + "', '" + s.getPassword() + "');";
-        db.update(query);
+        DB.instance.update(query);
         students[studentSize] = s;
         studentSize++;
         
@@ -36,5 +36,20 @@ public class StudentManager {
         return output;
     }
     
+    public ArrayList<String> getStudentsUsernameList() throws SQLException{
+        
+        ArrayList<String> list = new ArrayList<String>();
+        String query = "SELECT * FROM naritaaDB.Studentstbl;";      
+        ResultSet rs = DB.instance.query(query);
+        while(rs.next()){
+            list.add(rs.getString("Username"));
+        }
+        
+        //SELECT AVG(age) FROM Students;
+        //rs.next();
+        //double avg = rs.getDouble(1);
+       
+        return list;
+    }
     
 }

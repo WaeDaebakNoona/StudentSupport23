@@ -20,15 +20,15 @@ public class MessageManager {
     private DB db;
     
     public void addStudentNote(Message m) throws ClassNotFoundException, SQLException{
-        db = new DB();
+        
         String query = "INSERT INTO naritaaDB.StudentMessagestbl(Topic, Message)Values('" + m.getTopic() + "','" + m.getNote() + "');";
-        db.update(query);
+        DB.instance.update(query);
         messages = new Message[messagesSize];
         messagesSize++;
     
     }
     public String displayStudentMEssage() throws SQLException, ClassNotFoundException {
-        db = new DB();
+        
         String query = "SELECT * FROM naritaaDB.StudentMessagestbl;";
         ResultSet rs = db.query(query);
         String output = "";
@@ -39,13 +39,14 @@ public class MessageManager {
         }
         return output;
     }
+    // token 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
     
     public void addAdminMessage(Message m, Student s ) throws ClassNotFoundException, SQLException{
         //adds message from admin into adminmessages table
         //get username: username is their name and surname @reddam.house
-        db = new DB();
+        
         String query = "INSERT INTO naritaaDB.AdminMessagestbl(Student, Message)Values('" + s.getUsername()+ "','" + m.getNote() + "');";
-        db.update(query);
+        DB.instance.update(query);
         messages = new Message[messagesSize];
         messagesSize++;
     }
