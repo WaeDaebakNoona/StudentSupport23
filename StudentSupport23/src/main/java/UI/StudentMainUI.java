@@ -6,9 +6,12 @@ package UI;
 
 import Backend.Message;
 import Backend.MessageManager;
+import Backend.StudentManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +22,7 @@ public class StudentMainUI extends javax.swing.JFrame {
 
     private MessageManager mm;
     private Message m;
+    private StudentManager sm;
     /**
      * Creates new form StudentMainUI
      */
@@ -57,8 +61,8 @@ public class StudentMainUI extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
+        sentMessagesJList = new javax.swing.JList<>();
+        viewButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -78,7 +82,6 @@ public class StudentMainUI extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel1.setText("CONCERNS");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Narita\\Documents\\NetBeansProjects\\StudentSupport23\\StudentSupport23\\data\\information-button.png")); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
@@ -177,14 +180,19 @@ public class StudentMainUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Concerns", jPanel2);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        sentMessagesJList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList1);
+        jScrollPane2.setViewportView(sentMessagesJList);
 
-        jButton1.setText("jButton1");
+        viewButton.setText("VIEW");
+        viewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewButtonActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("jLabel3");
 
@@ -197,9 +205,9 @@ public class StudentMainUI extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addGap(0, 295, Short.MAX_VALUE)
+                        .addGap(0, 298, Short.MAX_VALUE)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(viewButton, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
@@ -211,7 +219,7 @@ public class StudentMainUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(viewButton)
                 .addGap(19, 19, 19))
         );
 
@@ -328,20 +336,36 @@ public class StudentMainUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String message = messageInput.getText();
         String topic = buttonTopicGroup.getSelection().getActionCommand();
+        
         mm = new MessageManager();
         m = new Message(topic, message);
+        
         try {
             mm.addStudentNote(m);
             messageInput.setText(" ");
+            JOptionPane.showMessageDialog(null, "Successfully sent!");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("error");
         }
-        JOptionPane.showMessageDialog(null, "Successfully sent!");
+        
         
     }//GEN-LAST:event_sendButtonActionPerformed
+
+    private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
+        // TODO add your handling code here:
+        mm = new MessageManager();
+                
+        try {
+            ArrayList<String> messages = mm.getStudentMessages();
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        DefaultListModel dlm = new DefaultListModel();
+            
+    }//GEN-LAST:event_viewButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -382,14 +406,12 @@ public class StudentMainUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton academicsRadBut;
     private javax.swing.ButtonGroup buttonTopicGroup;
     private javax.swing.JButton cancelButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -407,7 +429,9 @@ public class StudentMainUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton otherRadBut;
     private javax.swing.JRadioButton schoolRadBut;
     private javax.swing.JButton sendButton;
+    private javax.swing.JList<String> sentMessagesJList;
     private javax.swing.JRadioButton studentRadBut;
     private javax.swing.JRadioButton teachersRadBut;
+    private javax.swing.JButton viewButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,6 +7,7 @@ package Backend;
 import backend.DB;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,8 +22,8 @@ public class MessageManager {
     
     public void addStudentNote(Message m) throws ClassNotFoundException, SQLException{
         
-        String query = "INSERT INTO naritaaDB.StudentMessagestbl(Topic, Message)Values('" + m.getTopic() + "','" + m.getNote() + "');";
-        DB.instance.update(query);
+        String queryStr = "INSERT INTO naritaaDB.StudentMessagestbl(Topic, Message)Values('" + m.getTopic() + "','" + m.getNote() + "');";
+        DB.instance.update(queryStr);
         messages = new Message[messagesSize];
         messagesSize++;
     
@@ -51,5 +52,14 @@ public class MessageManager {
         messagesSize++;
     }
     
-    
+    public ArrayList<String> getStudentMessages() throws SQLException{
+        
+        ArrayList<String> list = new ArrayList<String>();
+        String query = "SELECT * FROM naritaaDB.Studentstbl;";      
+        ResultSet rs = DB.instance.query(query);
+        while(rs.next()){
+            list.add(rs.getString("Message"));
+        }
+        return list;
+    }
 }
