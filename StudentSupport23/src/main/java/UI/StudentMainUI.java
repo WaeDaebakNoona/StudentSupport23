@@ -7,6 +7,7 @@ package UI;
 import Backend.Message;
 import Backend.MessageManager;
 import Backend.StudentManager;
+import backend.DB;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -29,6 +30,14 @@ public class StudentMainUI extends javax.swing.JFrame {
     public StudentMainUI() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        try {
+            DB.init(); //only do this for testing. only have this is main ui and delete main methods
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -336,12 +345,12 @@ public class StudentMainUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String message = messageInput.getText();
         String topic = buttonTopicGroup.getSelection().getActionCommand();
-        
+        System.out.println(message + topic);
         mm = new MessageManager();
         m = new Message(topic, message);
         
         try {
-            mm.addStudentNote(m);
+            mm.addStudentMessage(m);
             messageInput.setText(" ");
             JOptionPane.showMessageDialog(null, "Successfully sent!");
         } catch (ClassNotFoundException ex) {

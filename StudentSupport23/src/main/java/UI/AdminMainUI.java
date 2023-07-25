@@ -7,6 +7,7 @@ package UI;
 import Backend.Message;
 
 import Backend.StudentManager;
+import backend.DB;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -26,8 +27,17 @@ public class AdminMainUI extends javax.swing.JFrame {
      * Creates new form AdminMainUI
      */
     public AdminMainUI() {
-        initComponents();
-        setLocationRelativeTo(null);
+        
+        try {
+            initComponents();
+            setLocationRelativeTo(null);
+            
+            DB.init();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 

@@ -33,13 +33,11 @@ public class StudentLoginUI extends javax.swing.JFrame {
         passwordInput = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        loginButton = new javax.swing.JButton();
+        signupButton = new javax.swing.JButton();
         infoIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        profileIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Narita\\Documents\\NetBeansProjects\\StudentSupport23\\StudentSupport23\\data\\profile-user.png")); // NOI18N
 
         usernameInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,11 +49,14 @@ public class StudentLoginUI extends javax.swing.JFrame {
 
         jLabel4.setText("Password");
 
-        jButton1.setText("Log-In");
+        loginButton.setText("Log-In");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Sign-Up");
-
-        infoIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Narita\\Documents\\NetBeansProjects\\StudentSupport23\\StudentSupport23\\data\\information-button.png")); // NOI18N
+        signupButton.setText("Sign-Up");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -75,9 +76,9 @@ public class StudentLoginUI extends javax.swing.JFrame {
                         .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(101, 101, 101)
-                        .addComponent(jButton2)
+                        .addComponent(signupButton)
                         .addGap(91, 91, 91)
-                        .addComponent(jButton1)))
+                        .addComponent(loginButton)))
                 .addContainerGap(113, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -108,8 +109,8 @@ public class StudentLoginUI extends javax.swing.JFrame {
                 .addComponent(passwordInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(signupButton)
+                    .addComponent(loginButton))
                 .addGap(57, 57, 57))
         );
 
@@ -130,6 +131,14 @@ public class StudentLoginUI extends javax.swing.JFrame {
     private void usernameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameInputActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        String user = usernameInput.getText();
+        String password = passwordInput.getText();
+        
+        
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,13 +177,13 @@ public class StudentLoginUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel infoIcon;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton loginButton;
     private javax.swing.JTextField passwordInput;
     private javax.swing.JLabel profileIcon;
+    private javax.swing.JButton signupButton;
     private javax.swing.JTextField usernameInput;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,7 +20,7 @@ public class MessageManager {
     private int messagesSize;
     private DB db;
     
-    public void addStudentNote(Message m) throws ClassNotFoundException, SQLException{
+    public void addStudentMessage(Message m) throws ClassNotFoundException, SQLException{
         
         String queryStr = "INSERT INTO naritaaDB.StudentMessagestbl(Topic, Message)Values('" + m.getTopic() + "','" + m.getNote() + "');";
         DB.instance.update(queryStr);
@@ -28,7 +28,7 @@ public class MessageManager {
         messagesSize++;
     
     }
-    public String displayStudentMEssage() throws SQLException, ClassNotFoundException {
+    public String displayStudentMessage() throws SQLException, ClassNotFoundException {
         
         String query = "SELECT * FROM naritaaDB.StudentMessagestbl;";
         ResultSet rs = db.query(query);
@@ -40,7 +40,7 @@ public class MessageManager {
         }
         return output;
     }
-    // token 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
+    
     
     public void addAdminMessage(Message m, Student s ) throws ClassNotFoundException, SQLException{
         //adds message from admin into adminmessages table
@@ -55,7 +55,7 @@ public class MessageManager {
     public ArrayList<String> getStudentMessages() throws SQLException{
         
         ArrayList<String> list = new ArrayList<String>();
-        String query = "SELECT * FROM naritaaDB.Studentstbl;";      
+        String query = "SELECT * FROM naritaaDB.StudentMessagestbl;";      
         ResultSet rs = DB.instance.query(query);
         while(rs.next()){
             list.add(rs.getString("Message"));
