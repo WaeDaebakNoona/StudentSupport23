@@ -52,6 +52,25 @@ public class StudentManager {
         return list;
     }
     
-    
+    //check username and password validity
+    public boolean checkValidity(String username, String password) throws SQLException{
+        
+        Boolean bool = false;
+        String query = "SELECT * FROM naritaaDB.Studentstbl;";
+        ResultSet rs = DB.instance.query(query);
+        String user = " ";
+        String pass = " ";
+        while(rs.next()){
+            user = rs.getString("Username");
+            pass = rs.getString("Password");
+            
+            if(username.equalsIgnoreCase(user)|| password.equals(pass)){
+                bool = true;
+                break;
+            }
+        }
+        
+        return bool;
+    }
     
 }
