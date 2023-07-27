@@ -369,10 +369,12 @@ public class StudentMainUI extends javax.swing.JFrame {
                 
         try {
             ArrayList<String> messages = mm.getStudentMessages();
+            DefaultListModel dlm = new DefaultListModel();
+            dlm.addAll(messages);
         } catch (SQLException ex) {
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        DefaultListModel dlm = new DefaultListModel();
+        
             
     }//GEN-LAST:event_viewButtonActionPerformed
 

@@ -53,10 +53,11 @@ public class StudentManager {
     }
     
     //check username and password validity
+    //compares username and password in input to database
     public boolean checkValidity(String username, String password) throws SQLException{
         
         Boolean bool = false;
-        String query = "SELECT * FROM naritaaDB.Studentstbl;";
+        String query = "SELECT Username, Password FROM naritaaDB.Studentstbl;";
         ResultSet rs = DB.instance.query(query);
         String user = " ";
         String pass = " ";

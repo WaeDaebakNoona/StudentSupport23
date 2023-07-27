@@ -170,9 +170,11 @@ public class StudentLoginUI extends javax.swing.JFrame {
                 dispose();
                 new StudentMainUI().setVisible(true);
             }
+            else{
+                errorLabel.setText("Error: Incorrect username or passsword");
+            }
         } catch (SQLException ex) {
-            //add error message
-            errorLabel.setText("Error: incorrect username or passsword");
+            System.out.println("SQL error");
             Logger.getLogger(StudentLoginUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         

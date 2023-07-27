@@ -9,6 +9,8 @@ import Backend.StudentManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,6 +27,14 @@ public class AddStudentUI extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         sm = new StudentManager();
+                
+        
+         DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>();
+		String[] grade = {"8", "9", "10","11","12"};
+		for (int i = 0; i < 6; i++) {
+			comboModel.addElement(grade[i]);
+		}
+		gradeInput.setModel(comboModel);
     }
 
     /**
