@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -38,6 +39,14 @@ public class StudentMainUI extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+         DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>();
+		String[] topics = {"School Facility", "Academics", "Teachers","dont know","yet"};
+		for (int i = 0; i < 5; i++) {
+			comboModel.addElement(topics[i]);
+		}
+                
+		topicBox.setModel(comboModel);
     }
 
     /**
@@ -57,14 +66,10 @@ public class StudentMainUI extends javax.swing.JFrame {
         messageInput = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        schoolRadBut = new javax.swing.JRadioButton();
-        studentRadBut = new javax.swing.JRadioButton();
-        teachersRadBut = new javax.swing.JRadioButton();
-        academicsRadBut = new javax.swing.JRadioButton();
-        otherRadBut = new javax.swing.JRadioButton();
         cancelButton = new javax.swing.JButton();
         sendButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        topicBox = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
@@ -97,21 +102,6 @@ public class StudentMainUI extends javax.swing.JFrame {
             }
         });
 
-        buttonTopicGroup.add(schoolRadBut);
-        schoolRadBut.setText("School Facilities");
-
-        buttonTopicGroup.add(studentRadBut);
-        studentRadBut.setText("Students");
-
-        buttonTopicGroup.add(teachersRadBut);
-        teachersRadBut.setText("Teachers");
-
-        buttonTopicGroup.add(academicsRadBut);
-        academicsRadBut.setText("Academics");
-
-        buttonTopicGroup.add(otherRadBut);
-        otherRadBut.setText("Other");
-
         cancelButton.setText("Cancel");
 
         sendButton.setText("Send");
@@ -123,6 +113,13 @@ public class StudentMainUI extends javax.swing.JFrame {
 
         jLabel5.setText("jLabel5");
 
+        topicBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        topicBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                topicBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -130,61 +127,48 @@ public class StudentMainUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(sendButton))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(cancelButton)
-                                        .addGap(71, 71, 71)
-                                        .addComponent(sendButton))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(topicBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(schoolRadBut)
-                                    .addComponent(studentRadBut)
-                                    .addComponent(teachersRadBut)
-                                    .addComponent(academicsRadBut)
-                                    .addComponent(otherRadBut))))))
+                                    .addComponent(cancelButton)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(24, 24, 24))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel2)
-                        .addGap(57, 57, 57)
-                        .addComponent(schoolRadBut)
                         .addGap(18, 18, 18)
-                        .addComponent(studentRadBut)
-                        .addGap(18, 18, 18)
-                        .addComponent(teachersRadBut)
-                        .addGap(18, 18, 18)
-                        .addComponent(academicsRadBut)
-                        .addGap(18, 18, 18)
-                        .addComponent(otherRadBut))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addGap(40, 40, 40)
+                        .addComponent(topicBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelButton)
-                    .addComponent(sendButton))
-                .addGap(15, 15, 15))
+                    .addComponent(sendButton)
+                    .addComponent(cancelButton))
+                .addContainerGap(33, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Concerns", jPanel2);
@@ -378,6 +362,10 @@ public class StudentMainUI extends javax.swing.JFrame {
             
     }//GEN-LAST:event_viewButtonActionPerformed
 
+    private void topicBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topicBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_topicBoxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -414,7 +402,6 @@ public class StudentMainUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton academicsRadBut;
     private javax.swing.ButtonGroup buttonTopicGroup;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton jButton2;
@@ -437,12 +424,9 @@ public class StudentMainUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextArea messageInput;
-    private javax.swing.JRadioButton otherRadBut;
-    private javax.swing.JRadioButton schoolRadBut;
     private javax.swing.JButton sendButton;
     private javax.swing.JList<String> sentMessagesJList;
-    private javax.swing.JRadioButton studentRadBut;
-    private javax.swing.JRadioButton teachersRadBut;
+    private javax.swing.JComboBox<String> topicBox;
     private javax.swing.JButton viewButton;
     // End of variables declaration//GEN-END:variables
 }
