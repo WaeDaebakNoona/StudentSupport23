@@ -74,6 +74,11 @@ public class StudentLoginUI extends javax.swing.JFrame {
         });
 
         signupButton.setText("Sign-Up");
+        signupButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signupButtonActionPerformed(evt);
+            }
+        });
 
         passwordInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,8 +98,7 @@ public class StudentLoginUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(244, 244, 244)
-                            .addComponent(profileIcon)
-                            .addGap(11, 11, 11))
+                            .addComponent(profileIcon))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(101, 101, 101)
                             .addComponent(signupButton)
@@ -184,6 +188,12 @@ public class StudentLoginUI extends javax.swing.JFrame {
     private void passwordInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordInputActionPerformed
+
+    private void signupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupButtonActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new AddStudentUI().setVisible(true);
+    }//GEN-LAST:event_signupButtonActionPerformed
 
     /**
      * @param args the command line arguments

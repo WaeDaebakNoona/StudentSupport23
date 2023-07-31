@@ -40,13 +40,11 @@ public class StudentMainUI extends javax.swing.JFrame {
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-         DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>();
 		String[] topics = {"School Facility", "Academics", "Teachers","dont know","yet"};
-		for (int i = 0; i < 5; i++) {
-			comboModel.addElement(topics[i]);
-		}
-                
+         DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(topics);
 		topicBox.setModel(comboModel);
+                
+                DefaultListModel<String> listModel = new DefaultListModel<>();
     }
 
     /**
