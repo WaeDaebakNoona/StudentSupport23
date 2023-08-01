@@ -13,19 +13,19 @@ import java.util.logging.Logger;
  *
  * @author Narita
  */
-public class RegisterUI extends javax.swing.JFrame {
+public class StartUpUI extends javax.swing.JFrame {
 
     /**
      * Creates new form RegisterUI
      */
-    public RegisterUI() {
+    public StartUpUI() {
         initComponents();
         try {
             DB.init();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(RegisterUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StartUpUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(RegisterUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StartUpUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         setLocationRelativeTo(null);
     }
@@ -155,20 +155,21 @@ public class RegisterUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegisterUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartUpUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegisterUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartUpUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegisterUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartUpUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegisterUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartUpUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegisterUI().setVisible(true);
+                new StartUpUI().setVisible(true);
             }
         });
     }
