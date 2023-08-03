@@ -10,12 +10,16 @@ package Backend;
  */
 public class Message {
     
+    
     private String topic;
     private String note;
+    private String header;
+    
 
-    public Message(String topic, String note) {
+    public Message(String topic, String note, String head) {
         this.topic = topic;
         this.note = note;
+        header = head;
     }
 
     public String getTopic() {
@@ -33,6 +37,15 @@ public class Message {
     public void setNote(String note) {
         this.note = note;
     }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
+    }
+    
     
     
     
