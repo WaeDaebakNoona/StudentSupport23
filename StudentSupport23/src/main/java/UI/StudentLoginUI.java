@@ -196,7 +196,7 @@ public class StudentLoginUI extends javax.swing.JFrame {
         String password = passwordInput.getText();
         sm = new StudentManager();
         try {
-            if(sm.checkValidity(user, password)){
+            if(sm.checkValidity(user, password)){ // if username and password are correct
                 dispose();
                 new StudentMainUI().setVisible(true);
             }
@@ -218,7 +218,7 @@ public class StudentLoginUI extends javax.swing.JFrame {
     private void signupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupButtonActionPerformed
         // TODO add your handling code here:
         dispose();
-        new AddStudentUI().setVisible(true);
+        new RegisterStudentUI().setVisible(true);
     }//GEN-LAST:event_signupButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

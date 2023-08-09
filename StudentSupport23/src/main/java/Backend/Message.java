@@ -14,12 +14,14 @@ public class Message {
     private String topic;
     private String note;
     private String header;
+    private String subTopic;
     
 
-    public Message(String topic, String note, String head) {
+    public Message(String topic, String sub, String head, String note) {
         this.topic = topic;
         this.note = note;
         header = head;
+        subTopic = sub;
     }
 
     public String getTopic() {
@@ -44,6 +46,14 @@ public class Message {
 
     public void setHeader(String header) {
         this.header = header;
+    }
+
+    public String getSubTopic() {
+        return subTopic;
+    }
+
+    public void setSubTopic(String subTopic) {
+        this.subTopic = subTopic;
     }
     
     

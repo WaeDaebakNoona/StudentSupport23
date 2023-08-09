@@ -18,22 +18,22 @@ import javax.swing.JOptionPane;
  *
  * @author Narita
  */
-public class AddStudentUI extends javax.swing.JFrame {
+public class RegisterStudentUI extends javax.swing.JFrame {
 
     private StudentManager sm;
     /**
      * Creates new form AddStudentUI
      */
-    public AddStudentUI() {
+    public RegisterStudentUI() {
         
         initComponents();
         setLocationRelativeTo(null);
         try {
             DB.init();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AddStudentUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisterStudentUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(AddStudentUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisterStudentUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         sm = new StudentManager();
                 
@@ -237,10 +237,10 @@ public class AddStudentUI extends javax.swing.JFrame {
         try {
             sm.addStudents(s);
         } catch (SQLException ex) {
-            Logger.getLogger(AddStudentUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisterStudentUI.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("not found");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AddStudentUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisterStudentUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         JOptionPane.showMessageDialog(null, "Successfully Addded");
         
@@ -288,20 +288,21 @@ public class AddStudentUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddStudentUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterStudentUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddStudentUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterStudentUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddStudentUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterStudentUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddStudentUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterStudentUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddStudentUI().setVisible(true);
+                new RegisterStudentUI().setVisible(true);
             }
         });
     }

@@ -22,7 +22,7 @@ public class MessageManager {
     
     public void addStudentMessage(Message m) throws ClassNotFoundException, SQLException{
         
-        String queryStr = "INSERT INTO naritaaDB.StudentMessagestbl(Topic, Message, Header)Values('" + m.getTopic() + "','" + m.getNote() + "','" + m.getHeader() + "');";
+        String queryStr = "INSERT INTO naritaaDB.StudentMessagestbl(Topic, Subtopic, Header, Message)Values('" + m.getTopic() + "','" + m.getSubTopic() + "','" + m.getHeader() +  "','" + m.getNote() +"');";
         DB.instance.update(queryStr);
         messages = new Message[messagesSize];
         messagesSize++;
@@ -55,11 +55,32 @@ public class MessageManager {
     public ArrayList<String> getStudentMessages() throws SQLException{
         
         ArrayList<String> list = new ArrayList<String>();
-        String query = "SELECT * FROM naritaaDB.StudentMessagestbl;";      
+        String query = "SELECT Message, Header FROM naritaaDB.StudentMessagestbl;";      
         ResultSet rs = DB.instance.query(query);
         while(rs.next()){
+            list.add(rs.getString("Header"));
             list.add(rs.getString("Message"));
+            //add date and header 
         }
         return list;
     }
+    
+    //get an aray list of all of the admin messages
+     public ArrayList<String> getAdminMessages() throws SQLException {
+
+        ArrayList<String> list = new ArrayList<String>();
+        String query = "SELECT * FROM naritaaDB.AdminMessagestbl;";
+        ResultSet rs = DB.instance.query(query);
+        while (rs.next()) {
+            list.add(rs.getString("Message"));
+
+        }
+        return list;
+    }//end
+     
+     public void updateUserDeatails(String name, String surname, String username, String password, String grade, String id) throws SQLException{
+         String query = "Update naritaaDB.Studentstbl set Name = " + name +",Surname = "+ surname+ ",Username = "+ username + ",Password = " + ",Grade =" + grade + "where id = " + id +";";
+         DB.instance.update(query);
+     }
+     
 }
