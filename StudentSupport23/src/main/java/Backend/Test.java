@@ -14,10 +14,14 @@ public class Test {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         
         StudentManager sm = new StudentManager();
-        Student s = new Student("Maa", "Do", "abbott.ans", "12", "1234");
-        //it works! create username
-        System.out.println(sm.createUsername("Maya","Rivera" ));
-        sm.addStudents(s);
+        String student = "mia";
+        sm.setCurrentStudent(student);
+        System.out.println(sm.getCurrentStudent());
+//        StudentManager sm = new StudentManager();
+//        Student s = new Student("Maa", "Do", "abbott.ans", "12", "1234");
+//        //it works! create username
+//        System.out.println(sm.createUsername("Maya","Rivera" ));
+//        sm.addStudents(s);
     }
     
 }

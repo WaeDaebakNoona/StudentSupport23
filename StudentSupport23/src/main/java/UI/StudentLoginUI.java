@@ -32,6 +32,8 @@ public class StudentLoginUI extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(StudentLoginUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+        sm.setCurrentStudent(usernameInput.getText());
+        //current user
     }
 
     /**

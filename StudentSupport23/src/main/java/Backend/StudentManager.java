@@ -18,6 +18,9 @@ public class StudentManager {
     private Student[] students = new Student[100];
     private int studentSize = 0;
     
+    private String currentStudent = "";
+    
+    
     public void addStudents(Student s) throws SQLException, ClassNotFoundException{
         String query = "INSERT INTO `naritaaDB`.`Studentstbl` (`Name`, `Surname`, `Grade`, `Username`, `Password`)"
                 + " VALUES (' " + s.getName() + "', '" + s.getSurname() + "', '" + s.getGradeClass()+ "', '" + s.getUsername() + "', '" + s.getPassword() + "');";
@@ -72,6 +75,21 @@ public class StudentManager {
         }
         
         return bool;
+    }//end of method
+    
+    //works in my head, dont know if it actually works
+    public void setCurrentStudent(String student){
+        
+        for (int i = 0; i < students.length; i++) {
+            if(students[i].equals(student)){
+                currentStudent = students[i].getUsername();
+            } 
+        }
+       
     }
+    public String getCurrentStudent(){
+        return currentStudent;
+    }
+
     
 }

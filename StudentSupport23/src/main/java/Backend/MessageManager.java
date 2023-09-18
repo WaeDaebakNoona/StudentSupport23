@@ -27,6 +27,10 @@ public class MessageManager {
         messages = new Message[messagesSize];
         messagesSize++;
     
+//        String queryStr = "INSERT INTO naritaaDB.StudentMessagestbl(User, Topic, Subtopic, Header, Message)Values('" + m.getUser() + "','" + m.getTopic() + "','" + m.getSubTopic() + "','" + m.getHeader() +  "','" + m.getNote() +"');";
+//        DB.instance.update(queryStr);
+//        messages = new Message[messagesSize];
+//        messagesSize++;
     }
     public String displayStudentMessage() throws SQLException, ClassNotFoundException {
         

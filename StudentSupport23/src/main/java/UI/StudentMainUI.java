@@ -181,6 +181,12 @@ public class StudentMainUI extends javax.swing.JFrame {
             }
         });
 
+        titleInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                titleInputActionPerformed(evt);
+            }
+        });
+
         jLabel7.setText("Header:");
 
         subtopicCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -519,6 +525,7 @@ public class StudentMainUI extends javax.swing.JFrame {
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
         // TODO add your handling code here:
+        String user = sm.getCurrentStudent(); //wrong logic
         String header = titleInput.getText();
         String message = messageInput.getText();
         String topic = (String)topicBox.getSelectedItem();
@@ -606,6 +613,10 @@ public class StudentMainUI extends javax.swing.JFrame {
         String password = passwordTextfield.getText();
         String grade = gradeTextfield.getText();
     }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void titleInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_titleInputActionPerformed
 
     /**
      * @param args the command line arguments
