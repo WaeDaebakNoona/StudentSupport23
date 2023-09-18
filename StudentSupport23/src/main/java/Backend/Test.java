@@ -17,6 +17,7 @@ public class Test {
         String student = "mia";
         sm.setCurrentStudent(student);
         System.out.println(sm.getCurrentStudent());
+        
 //        StudentManager sm = new StudentManager();
 //        Student s = new Student("Maa", "Do", "abbott.ans", "12", "1234");
 //        //it works! create username

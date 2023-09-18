@@ -32,8 +32,7 @@ public class StudentLoginUI extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(StudentLoginUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        sm.setCurrentStudent(usernameInput.getText());
-        //current user
+       
     }
 
     /**
@@ -55,20 +54,31 @@ public class StudentLoginUI extends javax.swing.JFrame {
         infoIcon = new javax.swing.JLabel();
         passwordInput = new javax.swing.JTextField();
         errorLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(218, 247, 166));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(profileIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 79, -1, -1));
 
         usernameInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameInputActionPerformed(evt);
             }
         });
+        jPanel1.add(usernameInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 131, 200, -1));
 
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
         jLabel3.setText("Username");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
 
+        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel4.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
         jLabel4.setText("Password");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, -1, -1));
 
         loginButton.setText("Log-In");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +86,7 @@ public class StudentLoginUI extends javax.swing.JFrame {
                 loginButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 294, -1, -1));
 
         signupButton.setText("Sign-Up");
         signupButton.addActionListener(new java.awt.event.ActionListener() {
@@ -83,17 +94,19 @@ public class StudentLoginUI extends javax.swing.JFrame {
                 signupButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(signupButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 294, -1, -1));
+        jPanel1.add(infoIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 24, -1, -1));
 
         passwordInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordInputActionPerformed(evt);
             }
         });
+        jPanel1.add(passwordInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 217, 200, -1));
 
         errorLabel.setForeground(new java.awt.Color(204, 0, 0));
         errorLabel.setText("jLabel1");
-
-        jLabel1.setText("jLabel1");
+        jPanel1.add(errorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 257, -1, -1));
 
         backButton.setText("<");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -101,89 +114,9 @@ public class StudentLoginUI extends javax.swing.JFrame {
                 backButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(usernameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(profileIcon)
-                        .addGap(93, 93, 93))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(signupButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(loginButton))
-                        .addComponent(passwordInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(113, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(backButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(infoIcon)
-                        .addGap(22, 22, 22))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(185, 185, 185))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(185, 185, 185))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(errorLabel)
-                                .addGap(195, 195, 195))))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(infoIcon)
-                            .addComponent(jLabel1)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backButton)))
-                .addGap(17, 17, 17)
-                .addComponent(profileIcon)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(usernameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(passwordInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(errorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(signupButton)
-                    .addComponent(loginButton))
-                .addGap(27, 27, 27))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,6 +127,8 @@ public class StudentLoginUI extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
+         //sm.setCurrentStudent(usernameInput.getText());
+        //current user
         String user = usernameInput.getText();
         String password = passwordInput.getText();
         sm = new StudentManager();
@@ -268,7 +203,6 @@ public class StudentLoginUI extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JLabel errorLabel;
     private javax.swing.JLabel infoIcon;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

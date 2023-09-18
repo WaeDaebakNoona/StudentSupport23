@@ -525,12 +525,14 @@ public class StudentMainUI extends javax.swing.JFrame {
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
         // TODO add your handling code here:
-        String user = sm.getCurrentStudent(); //wrong logic
+        //String user = sm.getCurrentStudent(); //wrong logic
         String header = titleInput.getText();
         String message = messageInput.getText();
         String topic = (String)topicBox.getSelectedItem();
         String subtopic = (String)subtopicCombobox.getSelectedItem();
+        
         System.out.println(message + topic); //only for testing
+        
         mm = new MessageManager();
         m = new Message(topic, subtopic, header, message);
         
