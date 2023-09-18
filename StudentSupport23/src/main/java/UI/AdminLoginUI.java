@@ -10,6 +10,7 @@ package UI;
  */
 public class AdminLoginUI extends javax.swing.JFrame {
 
+    //okay the grind starts now
     /**
      * Creates new form AdminLoginUI
      */
