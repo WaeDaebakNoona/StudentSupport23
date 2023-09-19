@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 //
 /**
@@ -31,6 +32,9 @@ public class StudentMainUI extends javax.swing.JFrame {
     public StudentMainUI() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        ImageIcon image = new ImageIcon("resources/information.png");
+        iconLabel.setIcon(image);
         
         try {
             DB.init(); //only do this for testing. only have this is main ui and delete main methods
@@ -98,12 +102,14 @@ public class StudentMainUI extends javax.swing.JFrame {
         sendButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         topicBox = new javax.swing.JComboBox<>();
-        informationLabel = new javax.swing.JLabel();
         titleInput = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         subtopicCombobox = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        iconLabel = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
@@ -135,6 +141,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
@@ -174,13 +181,6 @@ public class StudentMainUI extends javax.swing.JFrame {
             }
         });
 
-        informationLabel.setText("jLabel6");
-        informationLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                informationLabelMousePressed(evt);
-            }
-        });
-
         titleInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 titleInputActionPerformed(evt);
@@ -193,7 +193,18 @@ public class StudentMainUI extends javax.swing.JFrame {
 
         jLabel8.setText("Sub-Topic:");
 
-        jLabel6.setText("jLabel6");
+        jLabel6.setText("On this page, you can voice your concerns and express your own thoughts");
+
+        iconLabel.setText("gfhgfhghgh");
+        iconLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconLabelMouseClicked(evt);
+            }
+        });
+
+        jLabel18.setText("on an array of topics with their subtopics by crafting your own messages to ");
+
+        jLabel19.setText("send to the Student Support Counil");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -206,65 +217,73 @@ public class StudentMainUI extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel6))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(cancelButton)
-                                        .addGap(107, 107, 107)
-                                        .addComponent(sendButton))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(titleInput, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(topicBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8)
-                                    .addComponent(subtopicCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addComponent(informationLabel)))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel7)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(titleInput, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(topicBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(subtopicCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel5)
+                                            .addComponent(cancelButton)
+                                            .addComponent(sendButton)))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel18)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel19))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(iconLabel)
+                                .addGap(16, 16, 16)))))
                 .addGap(24, 24, 24))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(informationLabel))
+                    .addComponent(iconLabel)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titleInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 26, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
                         .addComponent(topicBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(subtopicCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(sendButton)
-                            .addComponent(cancelButton))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addGap(12, 12, 12)
+                        .addComponent(subtopicCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cancelButton)
+                        .addGap(22, 22, 22)
+                        .addComponent(sendButton))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Concerns", jPanel2);
@@ -502,51 +521,10 @@ public class StudentMainUI extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "hellloooo"); //not gonna use this, maybe popup menu or sum?
-    }//GEN-LAST:event_jLabel2MouseClicked
-
-    private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
-        // TODO add your handling code here:
-        //String user = sm.getCurrentStudent(); //wrong logic
-        String header = titleInput.getText();
-        String message = messageInput.getText();
-        String topic = (String)topicBox.getSelectedItem();
-        String subtopic = (String)subtopicCombobox.getSelectedItem();
-        
-        System.out.println(message + topic); //only for testing
-        
-        mm = new MessageManager();
-        m = new Message(topic, subtopic, header, message);
-        
-        try {
-            mm.addStudentMessage(m);
-            messageInput.setText(" ");
-            titleInput.setText(" ");
-            JOptionPane.showMessageDialog(null, "Successfully sent!");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("error");
-        }
-
-    }//GEN-LAST:event_sendButtonActionPerformed
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
         // TODO add your handling code here:
@@ -574,47 +552,6 @@ public class StudentMainUI extends javax.swing.JFrame {
   
     }//GEN-LAST:event_viewButtonActionPerformed
 
-    private void topicBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topicBoxActionPerformed
-        // TODO add your handling code here:
-        if(topicBox.getSelectedItem().equals("Academics")){
-                    String[] subAcademic = {"Time management", "Other"};
-                    DefaultComboBoxModel<String> comboModelA = new DefaultComboBoxModel<String>(subAcademic);
-                    subtopicCombobox.setModel(comboModelA);
-                }
-                else if(topicBox.getSelectedItem().equals("Facilities")){
-                    String[] subFacilities = {"Bathrooms" ," Classrooms" ,  "Hallways"," Other"};
-                    DefaultComboBoxModel<String> comboModel0A = new DefaultComboBoxModel<String>(subFacilities);
-                    subtopicCombobox.setModel(comboModel0A);
-                }
-                else if(topicBox.getSelectedItem().equals("Teachers")){
-                    String[] subTeachers = {"Mr B", "Mr Smee"," Mrs Bigara"," Mrs Jacobs"};
-                    DefaultComboBoxModel<String> comboModelAs = new DefaultComboBoxModel<String>(subTeachers);
-                    subtopicCombobox.setModel(comboModelAs);
-                }
-                else if(topicBox.getSelectedItem().equals("Red deli")){
-                    String[] subReddeli = {"Service", "Food" , "Costs", "Other"};
-                    DefaultComboBoxModel<String> comboModelAd = new DefaultComboBoxModel<String>(subReddeli);
-                    subtopicCombobox.setModel(comboModelAd);
-                }
-                else if(topicBox.getSelectedItem().equals("Students")){
-                    String[] subStudents = {"Bullying", "Personal", "Other"};
-                    DefaultComboBoxModel<String> comboModelAk = new DefaultComboBoxModel<String>(subStudents);
-                    subtopicCombobox.setModel(comboModelAk);
-                }
-    }//GEN-LAST:event_topicBoxActionPerformed
-
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        // TODO add your handling code here:
-        messageInput.setText(" ");
-        titleInput.setText(" ");
-        
-    }//GEN-LAST:event_cancelButtonActionPerformed
-
-    private void informationLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informationLabelMousePressed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "message");
-    }//GEN-LAST:event_informationLabelMousePressed
-
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
         String name = nameTextfield.getText();
@@ -624,9 +561,82 @@ public class StudentMainUI extends javax.swing.JFrame {
         String grade = gradeTextfield.getText();
     }//GEN-LAST:event_updateButtonActionPerformed
 
+    private void iconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "How to work the app: \n"+ " Choose a heading and write it in the field labeled 'Header'. Write your message in the text area. Choose your topic and subtopic that relate to your message. Send!", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+        // component - text - title
+    }//GEN-LAST:event_iconLabelMouseClicked
+
     private void titleInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_titleInputActionPerformed
+
+    private void topicBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topicBoxActionPerformed
+        // TODO add your handling code here:
+        if(topicBox.getSelectedItem().equals("Academics")){
+            String[] subAcademic = {"Time management", "Other"};
+            DefaultComboBoxModel<String> comboModelA = new DefaultComboBoxModel<String>(subAcademic);
+            subtopicCombobox.setModel(comboModelA);
+        }
+        else if(topicBox.getSelectedItem().equals("Facilities")){
+            String[] subFacilities = {"Bathrooms" ," Classrooms" ,  "Hallways"," Other"};
+            DefaultComboBoxModel<String> comboModel0A = new DefaultComboBoxModel<String>(subFacilities);
+            subtopicCombobox.setModel(comboModel0A);
+        }
+        else if(topicBox.getSelectedItem().equals("Teachers")){
+            String[] subTeachers = {"Mr B", "Mr Smee"," Mrs Bigara"," Mrs Jacobs"};
+            DefaultComboBoxModel<String> comboModelAs = new DefaultComboBoxModel<String>(subTeachers);
+            subtopicCombobox.setModel(comboModelAs);
+        }
+        else if(topicBox.getSelectedItem().equals("Red deli")){
+            String[] subReddeli = {"Service", "Food" , "Costs", "Other"};
+            DefaultComboBoxModel<String> comboModelAd = new DefaultComboBoxModel<String>(subReddeli);
+            subtopicCombobox.setModel(comboModelAd);
+        }
+        else if(topicBox.getSelectedItem().equals("Students")){
+            String[] subStudents = {"Bullying", "Personal", "Other"};
+            DefaultComboBoxModel<String> comboModelAk = new DefaultComboBoxModel<String>(subStudents);
+            subtopicCombobox.setModel(comboModelAk);
+        }
+    }//GEN-LAST:event_topicBoxActionPerformed
+
+    private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
+        // TODO add your handling code here:
+        //String user = sm.getCurrentStudent(); //wrong logic
+        String header = titleInput.getText();
+        String message = messageInput.getText();
+        String topic = (String)topicBox.getSelectedItem();
+        String subtopic = (String)subtopicCombobox.getSelectedItem();
+
+        System.out.println(message + topic); //only for testing
+
+        mm = new MessageManager();
+        m = new Message(topic, subtopic, header, message);
+
+        try {
+            mm.addStudentMessage(m);
+            messageInput.setText(" ");
+            titleInput.setText(" ");
+            JOptionPane.showMessageDialog(null, "Successfully sent!");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("error");
+        }
+    }//GEN-LAST:event_sendButtonActionPerformed
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        // TODO add your handling code here:
+        messageInput.setText(" ");
+        titleInput.setText(" ");
+
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "hellloooo"); //not gonna use this, maybe popup menu or sum?
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -667,7 +677,7 @@ public class StudentMainUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonTopicGroup;
     private javax.swing.JButton cancelButton;
     private javax.swing.JTextField gradeTextfield;
-    private javax.swing.JLabel informationLabel;
+    private javax.swing.JLabel iconLabel;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -678,6 +688,8 @@ public class StudentMainUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

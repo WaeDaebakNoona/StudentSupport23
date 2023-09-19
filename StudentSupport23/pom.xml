@@ -12,6 +12,7 @@
             <url>file:${project.basedir}/lib</url>
         </repository>
     </repositories>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>15</maven.compiler.source>
