@@ -21,7 +21,7 @@ public class MessageManager {
     private DB db;
     
     public void addStudentMessage(Message m) throws ClassNotFoundException, SQLException{
-        
+        messagesSize = 10;
         String queryStr = "INSERT INTO naritaaDB.StudentMessagestbl(Topic, Subtopic, Header, Message)Values('" + m.getTopic() + "','" + m.getSubTopic() + "','" + m.getHeader() +  "','" + m.getNote() +"');";
         DB.instance.update(queryStr);
         messages = new Message[messagesSize];
@@ -62,8 +62,8 @@ public class MessageManager {
         String query = "SELECT Message, Header FROM naritaaDB.StudentMessagestbl;";      
         ResultSet rs = DB.instance.query(query);
         while(rs.next()){
-            list.add(rs.getString("Header"));
-            list.add(rs.getString("Message"));
+            list.add(rs.getString("Header") + "Student");
+            //list.add(rs.getString("Message"));
             //add date and header 
         }
         return list;
@@ -87,4 +87,39 @@ public class MessageManager {
          DB.instance.update(query);
      }
      
-}
+     public String getMessge(String value) throws SQLException{
+         String output = "";
+         for (int i = 0; i < messages.length; i++) {
+
+             if(value.equals(messages[i])){
+                ArrayList<String> list = new ArrayList<String>();
+                String query = "SELECT * FROM naritaaDB.AdminMessagestbl;";
+                ResultSet rs = DB.instance.query(query);
+                while (rs.next()) {
+                    String title = rs.getString("Header");
+                    String topic = rs.getString("Topic");
+                    String subtopic = rs.getString("Subtopic");
+                    String message = rs.getString("Message");
+                    
+                    output += "Title: " + title + "Topic: " + topic + "Subtopic: " + subtopic + "Messages: " + message;
+                }
+             }
+         }
+        return output;
+             }
+         
+//         for (int i = 0; i < messages.length; i++) {
+//
+//             if(value.equals(messages[i])){
+//
+//                message += messages[i].getHeader();
+//                message += messages[i].getTopic();
+//                message += messages[i].getSubTopic();
+//                message += messages[i].getNote();
+//                message += messages[i].getUser();
+             
+         }
+         
+     
+     
+
