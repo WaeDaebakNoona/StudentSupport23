@@ -141,6 +141,13 @@ public class StudentMainUI extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        leaveButton = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(193, 173, 178));
@@ -317,6 +324,10 @@ public class StudentMainUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Concerns", jPanel2);
 
+        jPanel7.setBackground(new java.awt.Color(212, 186, 176));
+
+        sentMessagesJList.setBackground(new java.awt.Color(255, 255, 255));
+        sentMessagesJList.setForeground(new java.awt.Color(0, 0, 0));
         sentMessagesJList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -324,6 +335,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(sentMessagesJList);
 
+        viewButton.setForeground(new java.awt.Color(0, 0, 0));
         viewButton.setText("VIEW");
         viewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -333,6 +345,7 @@ public class StudentMainUI extends javax.swing.JFrame {
 
         jLabel3.setText("jLabel3");
 
+        refreshSentScreenButton.setForeground(new java.awt.Color(0, 0, 0));
         refreshSentScreenButton.setText("Refresh");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -379,6 +392,8 @@ public class StudentMainUI extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Sent", jPanel5);
 
+        jPanel6.setBackground(new java.awt.Color(212, 186, 176));
+
         receivedJlist.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -393,8 +408,10 @@ public class StudentMainUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("jLabel4");
 
+        refreshReceiveScreenButton.setForeground(new java.awt.Color(0, 0, 0));
         refreshReceiveScreenButton.setText("Refresh");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -442,6 +459,8 @@ public class StudentMainUI extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("History", jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(127, 134, 123));
 
         jLabel9.setText("Name:");
 
@@ -551,6 +570,83 @@ public class StudentMainUI extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Profile", jPanel4);
+
+        jPanel8.setBackground(new java.awt.Color(239, 237, 231));
+
+        leaveButton.setBackground(new java.awt.Color(200, 200, 196));
+        leaveButton.setForeground(new java.awt.Color(0, 0, 0));
+        leaveButton.setText("Leave");
+
+        jLabel20.setFont(new java.awt.Font("Constantia", 0, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel20.setText("Thank you for using the Student Support app");
+
+        jLabel21.setFont(new java.awt.Font("Constantia", 0, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setText("Never be afraid to speak up or ask for help");
+
+        jLabel22.setFont(new java.awt.Font("Constantia", 0, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("You are not alone");
+
+        jLabel23.setFont(new java.awt.Font("Ink Free", 2, 12)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel23.setText("Take care");
+
+        jLabel24.setFont(new java.awt.Font("Ink Free", 0, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel24.setText("Bye for now!");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel21)))
+                .addContainerGap(67, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addGap(146, 146, 146))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(leaveButton)
+                        .addGap(164, 164, 164))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel23)
+                        .addGap(172, 172, 172))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel24)
+                        .addGap(162, 162, 162))))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel24)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel22)
+                .addGap(18, 18, 18)
+                .addComponent(leaveButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel23)
+                .addContainerGap(204, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Exit", jPanel8);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -741,6 +837,11 @@ public class StudentMainUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -755,11 +856,13 @@ public class StudentMainUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JButton leaveButton;
     private javax.swing.JTextArea messageInput;
     private javax.swing.JTextField nameTextfield;
     private javax.swing.JTextField passwordTextfield;
