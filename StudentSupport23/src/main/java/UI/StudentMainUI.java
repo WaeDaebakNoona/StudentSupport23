@@ -335,6 +335,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(sentMessagesJList);
 
+        viewButton.setBackground(new java.awt.Color(187, 187, 187));
         viewButton.setForeground(new java.awt.Color(0, 0, 0));
         viewButton.setText("VIEW");
         viewButton.addActionListener(new java.awt.event.ActionListener() {
@@ -394,6 +395,8 @@ public class StudentMainUI extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(212, 186, 176));
 
+        receivedJlist.setBackground(new java.awt.Color(255, 255, 255));
+        receivedJlist.setForeground(new java.awt.Color(0, 0, 0));
         receivedJlist.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -401,6 +404,8 @@ public class StudentMainUI extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(receivedJlist);
 
+        jButton2.setBackground(new java.awt.Color(187, 187, 187));
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("VIEW");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -462,16 +467,39 @@ public class StudentMainUI extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(127, 134, 123));
 
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Name:");
 
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Surname:");
 
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Username:");
 
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Password:");
 
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Grade:");
 
+        nameTextfield.setBackground(new java.awt.Color(255, 255, 255));
+        nameTextfield.setForeground(new java.awt.Color(0, 0, 0));
+
+        surnameTextfield.setBackground(new java.awt.Color(255, 255, 255));
+        surnameTextfield.setForeground(new java.awt.Color(0, 0, 0));
+
+        passwordTextfield.setBackground(new java.awt.Color(255, 255, 255));
+        passwordTextfield.setForeground(new java.awt.Color(0, 0, 0));
+
+        usernameTextfield.setBackground(new java.awt.Color(255, 255, 255));
+        usernameTextfield.setForeground(new java.awt.Color(0, 0, 0));
+
+        gradeTextfield.setEditable(false);
+        gradeTextfield.setBackground(new java.awt.Color(255, 255, 255));
+        gradeTextfield.setForeground(new java.awt.Color(0, 0, 0));
+
+        updateButton.setBackground(new java.awt.Color(187, 187, 187));
+        updateButton.setForeground(new java.awt.Color(0, 0, 0));
         updateButton.setText("Update");
         updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -495,42 +523,42 @@ public class StudentMainUI extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGap(150, 150, 150)
+                            .addComponent(jLabel14))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGap(51, 51, 51)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel10)
+                                .addComponent(jLabel11)
+                                .addComponent(jLabel9)
+                                .addComponent(jLabel12)
+                                .addComponent(jLabel13))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(nameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(surnameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(usernameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(gradeTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel17)
+                            .addGap(17, 17, 17)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jLabel14))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(surnameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(usernameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(gradeTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel17)
-                        .addGap(17, 17, 17)))
+                        .addGap(167, 167, 167)
+                        .addComponent(updateButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel16)
-                .addGap(167, 167, 167))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(133, Short.MAX_VALUE)
+                .addGap(0, 110, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addGap(85, 85, 85))
+                        .addComponent(jLabel16)
+                        .addGap(167, 167, 167))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(updateButton)
-                        .addGap(151, 151, 151))))
+                        .addComponent(jLabel15)
+                        .addGap(108, 108, 108))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -562,9 +590,9 @@ public class StudentMainUI extends javax.swing.JFrame {
                             .addComponent(jLabel13)
                             .addComponent(gradeTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel10))
-                .addGap(34, 34, 34)
+                .addGap(46, 46, 46)
                 .addComponent(updateButton)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel17)
                 .addContainerGap())
         );
@@ -672,21 +700,25 @@ public class StudentMainUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String messageToView; 
         messageToView = (String)(sentMessagesJList.getSelectedValue());
+        
         try {
-            //        String messageInfo = mm.getMessge(messageToView);
-            JOptionPane.showMessageDialog(null, mm.getMessge(messageToView));
+            //
+            String messageInfo = mm.getMessge(messageToView);
+            JOptionPane.showMessageDialog(null, messageInfo);
             
-//        dispose();
-//        new ViewMessagesUI().setVisible(true);
-//        mm = new MessageManager();
-//                
-//        try {
-//            ArrayList<String> messages = mm.getStudentMessages();
-//            DefaultListModel dlm = new DefaultListModel();
-//            dlm.addAll(messages);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+            
+        dispose();
+        new ViewMessagesUI().setVisible(true);
+        mm = new MessageManager();
+                
+        try {
+            ArrayList<String> messages = mm.getStudentMessages();
+            DefaultListModel dlm = new DefaultListModel();
+            dlm.addAll(messages);
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR");
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);

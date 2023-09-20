@@ -60,7 +60,7 @@ public class StudentLoginUI extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(199, 199, 187));
+        jPanel1.setBackground(new java.awt.Color(239, 237, 231));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(profileIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 79, -1, -1));
 
@@ -146,10 +146,14 @@ public class StudentLoginUI extends javax.swing.JFrame {
         String password = passwordInput.getText();
         sm = new StudentManager();
         try {
-            if(sm.checkValidity(user, password)){ // if username and password are correct
+            if (user.isBlank() || password.isBlank()){
+                errorLabel.setText("Error: empty fields");
+            }
+            else if(sm.checkValidity(user, password)){ // if username and password are correct
                 dispose();
                 new StudentMainUI().setVisible(true);
             }
+           
             else{
                 errorLabel.setText("Error: Incorrect username or passsword");
             }

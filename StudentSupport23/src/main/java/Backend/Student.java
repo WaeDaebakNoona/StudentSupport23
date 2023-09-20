@@ -16,12 +16,12 @@ public class Student {
     private String username;
 
     
-    public Student(String name, String surname, String password, String gradeClass, String username) {
-        this.name = name;
-        this.surname = surname;
-        this.password = password;
-        this.gradeClass = gradeClass;
-        this.username = username;
+    public Student(String inN, String inS, String inP, String inG, String inU) {
+        this.name = inN;
+        this.surname = inS;
+        this.password = inP;
+        this.gradeClass = inG;
+        this.username = inU;
     }
 
     public String getName() {
