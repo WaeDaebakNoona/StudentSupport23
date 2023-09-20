@@ -79,7 +79,7 @@ public class StudentMainUI extends javax.swing.JFrame {
          receivedJlist.setModel(listModel1);
          
          //populate text fields with user's details
-    }
+    }//end of main
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -344,10 +344,16 @@ public class StudentMainUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("jLabel3");
 
         refreshSentScreenButton.setForeground(new java.awt.Color(0, 0, 0));
         refreshSentScreenButton.setText("Refresh");
+        refreshSentScreenButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                refreshSentScreenButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -604,6 +610,11 @@ public class StudentMainUI extends javax.swing.JFrame {
         leaveButton.setBackground(new java.awt.Color(200, 200, 196));
         leaveButton.setForeground(new java.awt.Color(0, 0, 0));
         leaveButton.setText("Leave");
+        leaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leaveButtonActionPerformed(evt);
+            }
+        });
 
         jLabel20.setFont(new java.awt.Font("Constantia", 0, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 0, 0));
@@ -705,25 +716,11 @@ public class StudentMainUI extends javax.swing.JFrame {
             //
             String messageInfo = mm.getMessge(messageToView);
             JOptionPane.showMessageDialog(null, messageInfo);
-            
-            
-        dispose();
-        new ViewMessagesUI().setVisible(true);
-        mm = new MessageManager();
-                
-        try {
-            ArrayList<String> messages = mm.getStudentMessages();
-            DefaultListModel dlm = new DefaultListModel();
-            dlm.addAll(messages);
-        } catch (SQLException ex) {
-            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR");
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-  
+  // end of method
     }//GEN-LAST:event_viewButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
@@ -815,6 +812,31 @@ public class StudentMainUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void refreshSentScreenButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshSentScreenButtonMouseClicked
+        // TODO add your handling code here:
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        try {
+            mm = new MessageManager();
+            listModel.addAll(mm.getStudentMessages()); //fix
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "SQL error");
+            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        sentMessagesJList.setModel(listModel);
+         DefaultListModel<String> listModel1 = new DefaultListModel<>();
+        try {
+            listModel1.addAll(mm.getAdminMessages());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "SQL error");
+            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_refreshSentScreenButtonMouseClicked
+
+    private void leaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaveButtonActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_leaveButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -517,6 +517,9 @@
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel3">
                               <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="jLabel3"/>
                               </Properties>
                             </Component>
@@ -527,6 +530,9 @@
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Refresh"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="refreshSentScreenButtonMouseClicked"/>
+                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -988,6 +994,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Leave"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="leaveButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel20">
                   <Properties>

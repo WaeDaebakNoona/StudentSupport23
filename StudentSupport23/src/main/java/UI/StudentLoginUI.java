@@ -51,7 +51,6 @@ public class StudentLoginUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
         signupButton = new javax.swing.JButton();
-        infoIcon = new javax.swing.JLabel();
         passwordInput = new javax.swing.JTextField();
         errorLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
@@ -105,7 +104,6 @@ public class StudentLoginUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(signupButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 294, -1, -1));
-        jPanel1.add(infoIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 24, -1, -1));
 
         passwordInput.setBackground(new java.awt.Color(255, 255, 255));
         passwordInput.addActionListener(new java.awt.event.ActionListener() {
@@ -219,7 +217,6 @@ public class StudentLoginUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JLabel errorLabel;
-    private javax.swing.JLabel infoIcon;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

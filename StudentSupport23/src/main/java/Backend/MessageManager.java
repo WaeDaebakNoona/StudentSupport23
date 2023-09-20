@@ -98,7 +98,7 @@ public class MessageManager {
                 String subtopic = rss.getString("Subtopic");
                 String message = rss.getString("Message");
 //skadh
-                output += "Title: " + title + "Topic: " + topic + "Subtopic: " + subtopic + "Messages: " + message;
+                output += "Title: " + title + "\nTopic: " + topic + "\nSubtopic: " + subtopic + "\nMessages: " + message;
 //               if (value.equals(qur)) {
 //            String query = "SELECT * FROM naritaaDB.AdminMessagestbl;";
 //            ResultSet rs = DB.instance.query(query);
