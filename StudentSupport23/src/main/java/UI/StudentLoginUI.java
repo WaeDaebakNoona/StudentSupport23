@@ -57,12 +57,14 @@ public class StudentLoginUI extends javax.swing.JFrame {
         backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(218, 247, 166));
+        jPanel1.setBackground(new java.awt.Color(199, 199, 187));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(profileIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 79, -1, -1));
 
+        usernameInput.setBackground(new java.awt.Color(255, 255, 255));
         usernameInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameInputActionPerformed(evt);
@@ -72,14 +74,19 @@ public class StudentLoginUI extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Username");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Password");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, -1, -1));
 
+        loginButton.setBackground(new java.awt.Color(187, 187, 187));
+        loginButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        loginButton.setForeground(new java.awt.Color(0, 0, 0));
         loginButton.setText("Log-In");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +95,9 @@ public class StudentLoginUI extends javax.swing.JFrame {
         });
         jPanel1.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 294, -1, -1));
 
+        signupButton.setBackground(new java.awt.Color(187, 187, 187));
+        signupButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        signupButton.setForeground(new java.awt.Color(0, 0, 0));
         signupButton.setText("Sign-Up");
         signupButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +107,7 @@ public class StudentLoginUI extends javax.swing.JFrame {
         jPanel1.add(signupButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 294, -1, -1));
         jPanel1.add(infoIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 24, -1, -1));
 
+        passwordInput.setBackground(new java.awt.Color(255, 255, 255));
         passwordInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordInputActionPerformed(evt);
@@ -108,6 +119,8 @@ public class StudentLoginUI extends javax.swing.JFrame {
         errorLabel.setText("jLabel1");
         jPanel1.add(errorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 257, -1, -1));
 
+        backButton.setBackground(new java.awt.Color(187, 187, 187));
+        backButton.setForeground(new java.awt.Color(0, 0, 0));
         backButton.setText("<");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

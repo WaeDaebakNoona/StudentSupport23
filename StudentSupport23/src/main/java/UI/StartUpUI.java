@@ -60,6 +60,7 @@ public class StartUpUI extends javax.swing.JFrame {
         jLabel2.setText("STUDENT SUPPORT");
 
         jLabel3.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Purpose...");
 
         studentButton.setBackground(new java.awt.Color(200, 200, 200));

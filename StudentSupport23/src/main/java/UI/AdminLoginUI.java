@@ -42,7 +42,7 @@ public class AdminLoginUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(212, 186, 176));
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Username:");

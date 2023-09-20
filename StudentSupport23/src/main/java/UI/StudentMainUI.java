@@ -118,11 +118,13 @@ public class StudentMainUI extends javax.swing.JFrame {
         sentMessagesJList = new javax.swing.JList<>();
         viewButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        refreshSentScreenButton = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         receivedJlist = new javax.swing.JList<>();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        refreshReceiveScreenButton = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -141,15 +143,22 @@ public class StudentMainUI extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(193, 173, 178));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
+        jPanel2.setBackground(new java.awt.Color(193, 173, 178));
+
+        messageInput.setBackground(new java.awt.Color(255, 255, 255));
         messageInput.setColumns(20);
+        messageInput.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
+        messageInput.setForeground(new java.awt.Color(0, 0, 0));
         messageInput.setRows(5);
         jScrollPane1.setViewportView(messageInput);
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("CONCERNS");
 
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -158,6 +167,9 @@ public class StudentMainUI extends javax.swing.JFrame {
             }
         });
 
+        cancelButton.setBackground(new java.awt.Color(187, 187, 187));
+        cancelButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        cancelButton.setForeground(new java.awt.Color(0, 0, 0));
         cancelButton.setText("Cancel");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,6 +177,9 @@ public class StudentMainUI extends javax.swing.JFrame {
             }
         });
 
+        sendButton.setBackground(new java.awt.Color(187, 187, 187));
+        sendButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        sendButton.setForeground(new java.awt.Color(0, 0, 0));
         sendButton.setText("Send");
         sendButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,8 +187,11 @@ public class StudentMainUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Topic:");
 
+        topicBox.setBackground(new java.awt.Color(187, 187, 187));
+        topicBox.setForeground(new java.awt.Color(0, 0, 0));
         topicBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         topicBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,20 +199,29 @@ public class StudentMainUI extends javax.swing.JFrame {
             }
         });
 
+        titleInput.setBackground(new java.awt.Color(255, 255, 255));
+        titleInput.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
+        titleInput.setForeground(new java.awt.Color(0, 0, 0));
         titleInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 titleInputActionPerformed(evt);
             }
         });
 
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Header:");
 
+        subtopicCombobox.setBackground(new java.awt.Color(187, 187, 187));
+        subtopicCombobox.setForeground(new java.awt.Color(0, 0, 0));
         subtopicCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Sub-Topic:");
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("On this page, you can voice your concerns and express your own thoughts");
 
+        iconLabel.setForeground(new java.awt.Color(0, 0, 0));
         iconLabel.setText("gfhgfhghgh");
         iconLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -202,8 +229,10 @@ public class StudentMainUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("on an array of topics with their subtopics by crafting your own messages to ");
 
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("send to the Student Support Counil");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -283,7 +312,7 @@ public class StudentMainUI extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addComponent(sendButton))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Concerns", jPanel2);
@@ -304,29 +333,35 @@ public class StudentMainUI extends javax.swing.JFrame {
 
         jLabel3.setText("jLabel3");
 
+        refreshSentScreenButton.setText("Refresh");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addGap(0, 334, Short.MAX_VALUE)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(viewButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(viewButton))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(refreshSentScreenButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
+                        .addComponent(jLabel3)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(jLabel3)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(refreshSentScreenButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(viewButton)
                 .addGap(19, 19, 19))
         );
@@ -352,8 +387,15 @@ public class StudentMainUI extends javax.swing.JFrame {
         jScrollPane3.setViewportView(receivedJlist);
 
         jButton2.setText("VIEW");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("jLabel4");
+
+        refreshReceiveScreenButton.setText("Refresh");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -361,25 +403,29 @@ public class StudentMainUI extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addGap(0, 334, Short.MAX_VALUE)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(refreshReceiveScreenButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(jLabel4)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(refreshReceiveScreenButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
         jTabbedPane2.addTab("Received", jPanel6);
@@ -563,7 +609,7 @@ public class StudentMainUI extends javax.swing.JFrame {
 
     private void iconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "How to work the app: \n"+ " Choose a heading and write it in the field labeled 'Header'. Write your message in the text area. Choose your topic and subtopic that relate to your message. Send!", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "How to work the app: \n"+ "1.) Choose a heading and write it in the field labeled 'Header'. \n" + "2.) Write your message in the text area. \n" + "3.) Choose your topic and subtopic that relate to your message. \n" + "4.) Send!\n" + "\n Press Cancel to refresh", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
         // component - text - title
     }//GEN-LAST:event_iconLabelMouseClicked
 
@@ -635,8 +681,12 @@ public class StudentMainUI extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "hellloooo"); //not gonna use this, maybe popup menu or sum?
+       // JOptionPane.showMessageDialog(null, "hellloooo"); //not gonna use this, maybe popup menu or sum?
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -714,6 +764,8 @@ public class StudentMainUI extends javax.swing.JFrame {
     private javax.swing.JTextField nameTextfield;
     private javax.swing.JTextField passwordTextfield;
     private javax.swing.JList<String> receivedJlist;
+    private javax.swing.JLabel refreshReceiveScreenButton;
+    private javax.swing.JLabel refreshSentScreenButton;
     private javax.swing.JButton sendButton;
     private javax.swing.JList<String> sentMessagesJList;
     private javax.swing.JComboBox<String> subtopicCombobox;
