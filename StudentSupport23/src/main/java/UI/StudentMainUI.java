@@ -17,6 +17,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 //
+
 /**
  *
  * @author Narita
@@ -26,16 +27,17 @@ public class StudentMainUI extends javax.swing.JFrame {
     private MessageManager mm;
     private Message m;
     private StudentManager sm;
+
     /**
      * Creates new form StudentMainUI
      */
     public StudentMainUI() {
         initComponents();
         setLocationRelativeTo(null);
-        
+
         ImageIcon image = new ImageIcon("resources/information.png");
         iconLabel.setIcon(image);
-        
+
         try {
             DB.init(); //only do this for testing. only have this is main ui and delete main methods
         } catch (ClassNotFoundException ex) {
@@ -44,23 +46,18 @@ public class StudentMainUI extends javax.swing.JFrame {
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-		String[] topics = {"Academics", "Facilities", "Teachers","Red deli","Students"};
-                DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(topics);
-		topicBox.setModel(comboModel);
-                
-                String[] subAcademic = {"Time management", "Other"};
-                DefaultComboBoxModel<String> comboModelA = new DefaultComboBoxModel<String>(subAcademic);
-                subtopicCombobox.setModel(comboModelA);
-                //String[] subAcademic = {"Time management, Other"};
-                //String[] subFacilities = {"Bathrooms, Classrooms, Hallways, Other"};
-                //String[] subTeachers = {"Mr B, Mr Smee, Mrs Bigara, Mrs Jacobs"};
-                //String[] subReddeli = {"Service, Food, Costs, Other"};
-                //String[] subStudents = {"Bullying, Personal, Other"};
-            
-                
-         
-                
-              DefaultListModel<String> listModel = new DefaultListModel<>();
+        //combo boxes topic
+        String[] topics = {"Academics", "Facilities", "Teachers", "Red deli", "Students"};
+        DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(topics);
+        topicBox.setModel(comboModel);
+
+        //subtopic
+        String[] subAcademic = {"Time management", "Other"};
+        DefaultComboBoxModel<String> comboModelA = new DefaultComboBoxModel<String>(subAcademic);
+        subtopicCombobox.setModel(comboModelA);
+
+        //Jlist
+        DefaultListModel<String> listModel = new DefaultListModel<>();
         try {
             mm = new MessageManager();
             listModel.addAll(mm.getStudentMessages()); //fix
@@ -69,16 +66,16 @@ public class StudentMainUI extends javax.swing.JFrame {
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         sentMessagesJList.setModel(listModel);
-         DefaultListModel<String> listModel1 = new DefaultListModel<>();
+        DefaultListModel<String> listModel1 = new DefaultListModel<>();
         try {
             listModel1.addAll(mm.getAdminMessages());
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "SQL error");
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-         receivedJlist.setModel(listModel1);
-         
-         //populate text fields with user's details
+        receivedJlist.setModel(listModel1);
+
+        //populate text fields with user's details
     }//end of main
 
     /**
@@ -153,7 +150,10 @@ public class StudentMainUI extends javax.swing.JFrame {
         setBackground(new java.awt.Color(193, 173, 178));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTabbedPane1.setBackground(new java.awt.Color(220, 220, 220));
+        jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setOpaque(true);
 
         jPanel2.setBackground(new java.awt.Color(193, 173, 178));
 
@@ -164,7 +164,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         messageInput.setRows(5);
         jScrollPane1.setViewportView(messageInput);
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Courier New", 3, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("CONCERNS");
 
@@ -198,6 +198,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         jLabel5.setText("Topic:");
 
         topicBox.setBackground(new java.awt.Color(187, 187, 187));
+        topicBox.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         topicBox.setForeground(new java.awt.Color(0, 0, 0));
         topicBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         topicBox.addActionListener(new java.awt.event.ActionListener() {
@@ -219,6 +220,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         jLabel7.setText("Header:");
 
         subtopicCombobox.setBackground(new java.awt.Color(187, 187, 187));
+        subtopicCombobox.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         subtopicCombobox.setForeground(new java.awt.Color(0, 0, 0));
         subtopicCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -226,7 +228,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         jLabel8.setText("Sub-Topic:");
 
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("On this page, you can voice your concerns and express your own thoughts");
+        jLabel6.setText("On this page you can voice your concerns and express your own thoughts");
 
         iconLabel.setForeground(new java.awt.Color(0, 0, 0));
         iconLabel.setText("gfhgfhghgh");
@@ -319,10 +321,14 @@ public class StudentMainUI extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addComponent(sendButton))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Concerns", jPanel2);
+
+        jTabbedPane2.setBackground(new java.awt.Color(220, 220, 220));
+        jTabbedPane2.setForeground(new java.awt.Color(0, 0, 0));
+        jTabbedPane2.setOpaque(true);
 
         jPanel7.setBackground(new java.awt.Color(212, 186, 176));
 
@@ -609,7 +615,7 @@ public class StudentMainUI extends javax.swing.JFrame {
 
         leaveButton.setBackground(new java.awt.Color(200, 200, 196));
         leaveButton.setForeground(new java.awt.Color(0, 0, 0));
-        leaveButton.setText("Leave");
+        leaveButton.setText("Exit");
         leaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 leaveButtonActionPerformed(evt);
@@ -709,18 +715,18 @@ public class StudentMainUI extends javax.swing.JFrame {
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
         // TODO add your handling code here:
-        String messageToView; 
-        messageToView = (String)(sentMessagesJList.getSelectedValue());
-        
+        String messageToView;
+        messageToView = (String) (sentMessagesJList.getSelectedValue());
+
         try {
             //
-            String messageInfo = mm.getMessge(messageToView);
+            String messageInfo = mm.getStudentMessage(messageToView);
             JOptionPane.showMessageDialog(null, messageInfo);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR");
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-  // end of method
+        // end of method
     }//GEN-LAST:event_viewButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
@@ -734,7 +740,7 @@ public class StudentMainUI extends javax.swing.JFrame {
 
     private void iconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "How to work the app: \n"+ "1.) Choose a heading and write it in the field labeled 'Header'. \n" + "2.) Write your message in the text area. \n" + "3.) Choose your topic and subtopic that relate to your message. \n" + "4.) Send!\n" + "\n Press Cancel to refresh", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "How to work the app: \n" + "1.) Choose a heading and write it in the field labeled 'Header'. \n" + "2.) Write your message in the text area. \n" + "3.) Choose your topic and subtopic that relate to your message. \n" + "4.) Send!\n" + "\n Press Cancel to refresh", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
         // component - text - title
     }//GEN-LAST:event_iconLabelMouseClicked
 
@@ -744,27 +750,23 @@ public class StudentMainUI extends javax.swing.JFrame {
 
     private void topicBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topicBoxActionPerformed
         // TODO add your handling code here:
-        if(topicBox.getSelectedItem().equals("Academics")){
+        if (topicBox.getSelectedItem().equals("Academics")) {
             String[] subAcademic = {"Time management", "Other"};
             DefaultComboBoxModel<String> comboModelA = new DefaultComboBoxModel<String>(subAcademic);
             subtopicCombobox.setModel(comboModelA);
-        }
-        else if(topicBox.getSelectedItem().equals("Facilities")){
-            String[] subFacilities = {"Bathrooms" ," Classrooms" ,  "Hallways"," Other"};
+        } else if (topicBox.getSelectedItem().equals("Facilities")) {
+            String[] subFacilities = {"Bathrooms", " Classrooms", "Hallways", " Other"};
             DefaultComboBoxModel<String> comboModel0A = new DefaultComboBoxModel<String>(subFacilities);
             subtopicCombobox.setModel(comboModel0A);
-        }
-        else if(topicBox.getSelectedItem().equals("Teachers")){
-            String[] subTeachers = {"Mr B", "Mr Smee"," Mrs Bigara"," Mrs Jacobs"};
+        } else if (topicBox.getSelectedItem().equals("Teachers")) {
+            String[] subTeachers = {"Mr B", "Mr Smee", " Mrs Bigara", " Mrs Jacobs"};
             DefaultComboBoxModel<String> comboModelAs = new DefaultComboBoxModel<String>(subTeachers);
             subtopicCombobox.setModel(comboModelAs);
-        }
-        else if(topicBox.getSelectedItem().equals("Red deli")){
-            String[] subReddeli = {"Service", "Food" , "Costs", "Other"};
+        } else if (topicBox.getSelectedItem().equals("Red deli")) {
+            String[] subReddeli = {"Service", "Food", "Costs", "Other"};
             DefaultComboBoxModel<String> comboModelAd = new DefaultComboBoxModel<String>(subReddeli);
             subtopicCombobox.setModel(comboModelAd);
-        }
-        else if(topicBox.getSelectedItem().equals("Students")){
+        } else if (topicBox.getSelectedItem().equals("Students")) {
             String[] subStudents = {"Bullying", "Personal", "Other"};
             DefaultComboBoxModel<String> comboModelAk = new DefaultComboBoxModel<String>(subStudents);
             subtopicCombobox.setModel(comboModelAk);
@@ -776,8 +778,8 @@ public class StudentMainUI extends javax.swing.JFrame {
         //String user = sm.getCurrentStudent(); //wrong logic
         String header = titleInput.getText();
         String message = messageInput.getText();
-        String topic = (String)topicBox.getSelectedItem();
-        String subtopic = (String)subtopicCombobox.getSelectedItem();
+        String topic = (String) topicBox.getSelectedItem();
+        String subtopic = (String) subtopicCombobox.getSelectedItem();
 
         System.out.println(message + topic); //only for testing
 
@@ -806,7 +808,7 @@ public class StudentMainUI extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
-       // JOptionPane.showMessageDialog(null, "hellloooo"); //not gonna use this, maybe popup menu or sum?
+        // JOptionPane.showMessageDialog(null, "hellloooo"); //not gonna use this, maybe popup menu or sum?
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -824,7 +826,7 @@ public class StudentMainUI extends javax.swing.JFrame {
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         sentMessagesJList.setModel(listModel);
-         DefaultListModel<String> listModel1 = new DefaultListModel<>();
+        DefaultListModel<String> listModel1 = new DefaultListModel<>();
         try {
             listModel1.addAll(mm.getAdminMessages());
         } catch (SQLException ex) {

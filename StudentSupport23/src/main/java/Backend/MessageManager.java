@@ -57,15 +57,13 @@ public class MessageManager {
     }
 
     public ArrayList<String> getStudentMessages() throws SQLException {
-
+        // returns an array of all student messages
         ArrayList<String> list = new ArrayList<String>();
         String query = "SELECT Message, Header FROM naritaaDB.StudentMessagestbl;";
         ResultSet rs = DB.instance.query(query);
         while (rs.next()) {
             list.add(rs.getString("Header"));
-            // + "Student"
-            //list.add(rs.getString("Message"));
-            //add date and header 
+            
         }
         return list;
     }
@@ -77,7 +75,7 @@ public class MessageManager {
         String query = "SELECT * FROM naritaaDB.AdminMessagestbl;";
         ResultSet rs = DB.instance.query(query);
         while (rs.next()) {
-            list.add(rs.getString("Message"));
+            list.add(rs.getString("Student"));
 
         }
         return list;
@@ -88,62 +86,52 @@ public class MessageManager {
         DB.instance.update(query);
     }
 
-    public String getMessge(String value) throws SQLException {
+    public String getStudentMessage(String value) throws SQLException {
+        //gets all information of message from student
+        
         String output = "";
         String qur = "SELECT * FROM naritaaDB.StudentMessagestbl WHERE Header = '" + value + "';";
+        
         ResultSet rss = DB.instance.query(qur);
         while(rss.next()){
                 String title = rss.getString("Header");
                 String topic = rss.getString("Topic");
                 String subtopic = rss.getString("Subtopic");
                 String message = rss.getString("Message");
-//skadh
                 output += "Title: " + title + "\nTopic: " + topic + "\nSubtopic: " + subtopic + "\nMessages: " + message;
-//               if (value.equals(qur)) {
-//            String query = "SELECT * FROM naritaaDB.AdminMessagestbl;";
-//            ResultSet rs = DB.instance.query(query);
-//            while (rs.next()) {
-//                String title = rs.getString("Header");
-//                String topic = rs.getString("Topic");
-//                String subtopic = rs.getString("Subtopic");
-//                String message = rs.getString("Message");
-//
-//                output += "Title: " + title + "Topic: " + topic + "Subtopic: " + subtopic + "Messages: " + message;
-//            }
-//
-//        }
+                
+            }
+        return output;
+    }//end of getStudentMessage method
+
+    public String getAdminMessage(String value) throws SQLException{
+        String output = "";
+        String query = "SELECT * FROM naritaaDB.AdminMessagestbl WHERE Student = '" + value + "';";
+        ResultSet rs = DB.instance.query(query);
+        while(rs.next()){
+                String Student = rs.getString("Student");
+                String Message = rs.getString("Message");
+                
+                output += "Student: " + Student + "\nMessage: " + Message ;
                 
             }
         
-    
         return output;
-    }
-
-//         for (int i = 0; i < messages.length; i++) {
-//
-//             if(value.equals(messages[i].getHeader())){
-//                ArrayList<String> list = new ArrayList<String>();
-//                
-//                String query = "SELECT * FROM naritaaDB.AdminMessagestbl;";
-//                ResultSet rs = DB.instance.query(query);
-//                while (rs.next()) {
-//                    String title = rs.getString("Header");
-//                    String topic = rs.getString("Topic");
-//                    String subtopic = rs.getString("Subtopic");
-//                    String message = rs.getString("Message");
-//                    
-//                    output += "Title: " + title + "Topic: " + topic + "Subtopic: " + subtopic + "Messages: " + message;
-//                }
-//             }
-//         }
-//         for (int i = 0; i < messages.length; i++) {
-//
-//             if(value.equals(messages[i])){
-//
-//                message += messages[i].getHeader();
-//                message += messages[i].getTopic();
-//                message += messages[i].getSubTopic();
-//                message += messages[i].getNote();
-//                message += messages[i].getUser();
+    }//end of getAdminMessage
+    
+    public String getNumMessages() throws SQLException{
+        //get the number of total messages from the studentmessages tbl
+        //help how do i do this?
+        String output = "";
+        String query = "SELECT count(*) FROM naritaaDB.StudentMessagestbl;";
+        ResultSet rs = DB.instance.query(query);
+        while(rs.next()){
+            String count = "";
+        }
+        return output;
+    }//end of method
+    
+    
+    
 }//end of class
 
