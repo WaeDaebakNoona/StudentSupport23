@@ -46,11 +46,11 @@ public class MessageManager {
         return output;
     }
 
-    public void addAdminMessage(Student s, String message) throws ClassNotFoundException, SQLException {
+    public void addAdminMessage(String s, String message) throws ClassNotFoundException, SQLException {
         //adds message from admin into adminmessages table
         //get username: username is their name and surname @reddam.house
 
-        String query = "INSERT INTO naritaaDB.AdminMessagestbl(Student, Message)Values('" + s.getUsername() + "','" + message + "');";
+        String query = "INSERT INTO naritaaDB.AdminMessagestbl(Student, Message)Values('" + s + "','" + message + "');";
         DB.instance.update(query);
     }
 

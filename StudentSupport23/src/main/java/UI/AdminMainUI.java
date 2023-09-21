@@ -122,10 +122,12 @@ public class AdminMainUI extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         sentJlist = new javax.swing.JList<>();
         viewButton = new javax.swing.JButton();
+        refreshLabel = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         receivedJlist = new javax.swing.JList<>();
         viewReceivedButton = new javax.swing.JButton();
+        refreshRecLabel = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         topicCombo = new javax.swing.JComboBox<>();
@@ -281,6 +283,14 @@ public class AdminMainUI extends javax.swing.JFrame {
             }
         });
 
+        refreshLabel.setForeground(new java.awt.Color(0, 0, 0));
+        refreshLabel.setText("Refresh");
+        refreshLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                refreshLabelMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -291,14 +301,19 @@ public class AdminMainUI extends javax.swing.JFrame {
                     .addComponent(jScrollPane3)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addGap(0, 284, Short.MAX_VALUE)
-                        .addComponent(viewButton)))
+                        .addComponent(viewButton))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(refreshLabel)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                .addComponent(refreshLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(viewButton)
                 .addContainerGap())
@@ -326,6 +341,9 @@ public class AdminMainUI extends javax.swing.JFrame {
             }
         });
 
+        refreshRecLabel.setForeground(new java.awt.Color(0, 0, 0));
+        refreshRecLabel.setText("Refresh");
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -336,14 +354,19 @@ public class AdminMainUI extends javax.swing.JFrame {
                     .addComponent(jScrollPane4)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                         .addGap(0, 284, Short.MAX_VALUE)
-                        .addComponent(viewReceivedButton)))
+                        .addComponent(viewReceivedButton))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(refreshRecLabel)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                .addComponent(refreshRecLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(viewReceivedButton)
                 .addContainerGap())
@@ -508,6 +531,14 @@ public class AdminMainUI extends javax.swing.JFrame {
         String studentIn = (String)studentComboBox.getSelectedItem();
         String messageIn = messageInput.getText();
         
+        try {
+            mm.addAdminMessage(studentIn, messageIn);
+            JOptionPane.showMessageDialog(null, "Successfully sent!");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
 
     }//GEN-LAST:event_sendButtonActionPerformed
@@ -556,6 +587,11 @@ public class AdminMainUI extends javax.swing.JFrame {
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_viewReceivedButtonActionPerformed
+
+    private void refreshLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshLabelMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_refreshLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -619,6 +655,8 @@ public class AdminMainUI extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea messageInput;
     private javax.swing.JList<String> receivedJlist;
+    private javax.swing.JLabel refreshLabel;
+    private javax.swing.JLabel refreshRecLabel;
     private javax.swing.JTextField searchTextfield;
     private javax.swing.JButton sendButton;
     private javax.swing.JList<String> sentJlist;
