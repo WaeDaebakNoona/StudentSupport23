@@ -4,7 +4,8 @@
  */
 package UI;
 
-import backend.DB;
+import Backend.AppManager;
+import Backend.DB;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,14 +21,15 @@ public class StartUpUI extends javax.swing.JFrame {
      */
     public StartUpUI() {
         initComponents();
+        setLocationRelativeTo(null);
         try {
-            DB.init();
+            AppManager.init();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(StartUpUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(StartUpUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        setLocationRelativeTo(null);
+        
     }
 
     /**

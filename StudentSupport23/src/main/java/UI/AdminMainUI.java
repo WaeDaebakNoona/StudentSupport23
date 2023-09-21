@@ -4,11 +4,12 @@
  */
 package UI;
 
+import Backend.AppManager;
 import Backend.Message;
 import Backend.MessageManager;
 
 import Backend.StudentManager;
-import backend.DB;
+import Backend.DB;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -23,28 +24,30 @@ import javax.swing.JOptionPane;
  * @author Narita
  */
 public class AdminMainUI extends javax.swing.JFrame {
-   
+
     private StudentManager sm;
     private MessageManager mm;
+
     /**
      * Creates new form AdminMainUI
      */
     public AdminMainUI() {
-        
+
+        initComponents();
+        setLocationRelativeTo(null);
+
         try {
-            initComponents();
-            setLocationRelativeTo(null);
-            
-            DB.init();
+            AppManager.init();//remeber only main
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         DefaultListModel<String> listModel = new DefaultListModel<>();
-        mm = new MessageManager();
-        try { 
-            listModel.addAll(mm.getAdminMessages());
+        
+        try {
+            listModel.addAll(AppManager.messageManager.getAdminMessages());
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " SQL error");
             Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -52,45 +55,40 @@ public class AdminMainUI extends javax.swing.JFrame {
         sentJlist.setModel(listModel);
         DefaultListModel<String> listModel1 = new DefaultListModel<>();
         try {
-            listModel1.addAll(mm.getStudentMessages());
+            listModel1.addAll(AppManager.messageManager.getStudentMessages());
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " SQL error");
             Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
         receivedJlist.setModel(listModel1);
-        
+
         //topic combo box on stats screen, sort messages by topics
         String[] topics = {"Academics", "Facilities", "Teachers", "Red deli", "Students"};
         DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(topics);
         topicCombo.setModel(comboModel);
-        
+
         //populate combo box with student usernames
         sm = new StudentManager();
-        DefaultComboBoxModel<String>studentList = new DefaultComboBoxModel<>();
+        DefaultComboBoxModel<String> studentList = new DefaultComboBoxModel<>();
         try {
-            studentList.addAll(sm.getStudentsUsernameList());
+            studentList.addAll(AppManager.studentManager.getStudentsUsernameList());
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " SQL error");
             Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         studentComboBox.setModel(studentList);
-        
+
         String numOfMessages;
         //error please help
         try {
-            numOfMessages = mm.getNumMessages();
+            numOfMessages = AppManager.messageManager.getNumMessages();
             totalMessagesOutput.setText(numOfMessages);
         } catch (SQLException ex) {
             System.out.println("num error ");
             Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
-        
-        
-        
+
     }//end of constructor
 
     /**
@@ -528,59 +526,54 @@ public class AdminMainUI extends javax.swing.JFrame {
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
         // TODO add your handling code here:
-        String studentIn = (String)studentComboBox.getSelectedItem();
+        String studentIn = (String) studentComboBox.getSelectedItem();
         String messageIn = messageInput.getText();
-        
+
         try {
-            mm.addAdminMessage(studentIn, messageIn);
+            AppManager.messageManager.addAdminMessage(studentIn, messageIn);
             JOptionPane.showMessageDialog(null, "Successfully sent!");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
 
     }//GEN-LAST:event_sendButtonActionPerformed
 
     private void searchTextfieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextfieldKeyReleased
         // TODO add your handling code here:
-        String search = searchTextfield.getText().trim();
-        if(!search.equals(" ")){
-            
-        }
     }//GEN-LAST:event_searchTextfieldKeyReleased
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         // TODO add your handling code here:
         messageInput.setText(" ");
-        
+
     }//GEN-LAST:event_clearButtonActionPerformed
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
         // TODO add your handling code here:
-        String messageView = (String)(sentJlist.getSelectedValue());
+        String messageView = (String) (sentJlist.getSelectedValue());
         String messageIn;
         try {
-            messageIn = mm.getAdminMessage(messageView);
+            messageIn = AppManager.messageManager.getAdminMessage(messageView);
             JOptionPane.showMessageDialog(null, messageIn);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR");
             Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_viewButtonActionPerformed
 
     private void viewReceivedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewReceivedButtonActionPerformed
         // TODO add your handling code here:
-        String messageToView; 
-        messageToView = (String)(receivedJlist.getSelectedValue());
-        
+        String messageToView;
+        messageToView = (String) (receivedJlist.getSelectedValue());
+
         try {
             //
-            String messageInfo = mm.getStudentMessage(messageToView);
+            String messageInfo = AppManager.messageManager.getStudentMessage(messageToView);
             JOptionPane.showMessageDialog(null, messageInfo);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR");
@@ -590,7 +583,7 @@ public class AdminMainUI extends javax.swing.JFrame {
 
     private void refreshLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshLabelMouseClicked
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_refreshLabelMouseClicked
 
     /**

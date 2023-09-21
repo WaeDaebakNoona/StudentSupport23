@@ -4,6 +4,8 @@
  */
 package UI;
 
+import Backend.AppManager;
+
 /**
  *
  * @author Narita
@@ -17,6 +19,7 @@ public class AdminLoginUI extends javax.swing.JFrame {
     public AdminLoginUI() {
         initComponents();
         setLocationRelativeTo(null);
+        //AppManager.init();
     }
 
     /**

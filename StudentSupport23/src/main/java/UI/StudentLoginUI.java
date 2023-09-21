@@ -4,8 +4,9 @@
  */
 package UI;
 
+import Backend.AppManager;
 import Backend.StudentManager;
-import backend.DB;
+import Backend.DB;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class StudentLoginUI extends javax.swing.JFrame {
 
-    private StudentManager sm;
+    
     /**
      * Creates new form StudentLoginUI
      */
@@ -25,15 +26,18 @@ public class StudentLoginUI extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         
+        
         try {
-            DB.init();
+            AppManager.init();//only for testing. only have this in starting screen
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(StudentLoginUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(StudentLoginUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
        
-    }
+       
+    }//end of constructo
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -142,12 +146,12 @@ public class StudentLoginUI extends javax.swing.JFrame {
         //current user
         String user = usernameInput.getText();
         String password = passwordInput.getText();
-        sm = new StudentManager();
+        
         try {
             if (user.isBlank() || password.isBlank()){
                 errorLabel.setText("Error: empty fields");
             }
-            else if(sm.checkValidity(user, password)){ // if username and password are correct
+            else if(AppManager.studentManager.checkValidity(user, password)){ // if username and password are correct
                 dispose();
                 new StudentMainUI().setVisible(true);
             }
@@ -159,8 +163,10 @@ public class StudentLoginUI extends javax.swing.JFrame {
             System.out.println("SQL error");
             Logger.getLogger(StudentLoginUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+        AppManager.studentManager.getStudentInfo(user);
         
-        
+        AppManager.setCurrentStudent(s);
+       //end of method 
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void passwordInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordInputActionPerformed

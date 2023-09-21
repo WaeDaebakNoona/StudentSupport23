@@ -4,10 +4,11 @@
  */
 package UI;
 
+import Backend.AppManager;
 import Backend.Message;
 import Backend.MessageManager;
 import Backend.StudentManager;
-import backend.DB;
+import Backend.DB;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -24,9 +25,9 @@ import javax.swing.JOptionPane;
  */
 public class StudentMainUI extends javax.swing.JFrame {
 
-    private MessageManager mm;
+    
     private Message m;
-    private StudentManager sm;
+    
 
     /**
      * Creates new form StudentMainUI
@@ -39,7 +40,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         iconLabel.setIcon(image);
 
         try {
-            DB.init(); //only do this for testing. only have this is main ui and delete main methods
+            AppManager.init();//remember only have this on main screen
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -59,8 +60,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         //Jlist
         DefaultListModel<String> listModel = new DefaultListModel<>();
         try {
-            mm = new MessageManager();
-            listModel.addAll(mm.getStudentMessages()); //fix
+            listModel.addAll(AppManager.messageManager.getStudentMessages()); //fix
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "SQL error");
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -68,7 +68,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         sentMessagesJList.setModel(listModel);
         DefaultListModel<String> listModel1 = new DefaultListModel<>();
         try {
-            listModel1.addAll(mm.getAdminMessages());
+            listModel1.addAll(AppManager.messageManager.getAdminMessages());
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "SQL error");
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -720,7 +720,7 @@ public class StudentMainUI extends javax.swing.JFrame {
 
         try {
             //
-            String messageInfo = mm.getStudentMessage(messageToView);
+            String messageInfo = AppManager.messageManager.getStudentMessage(messageToView);
             JOptionPane.showMessageDialog(null, messageInfo);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR");
@@ -781,11 +781,11 @@ public class StudentMainUI extends javax.swing.JFrame {
         String topic = (String) topicBox.getSelectedItem();
         String subtopic = (String) subtopicCombobox.getSelectedItem();
 
-        mm = new MessageManager();
+        
         m = new Message(topic, subtopic, header, message);
 
         try {
-            mm.addStudentMessage(m);
+            AppManager.messageManager.addStudentMessage(m);
             messageInput.setText(" ");
             titleInput.setText(" ");
             JOptionPane.showMessageDialog(null, "Successfully sent!");
@@ -814,7 +814,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             
-            String messageInfo = mm.getAdminMessage(getTopic);
+            String messageInfo = AppManager.messageManager.getAdminMessage(getTopic);
             JOptionPane.showMessageDialog(null, messageInfo);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR");
@@ -826,8 +826,8 @@ public class StudentMainUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultListModel<String> listModel = new DefaultListModel<>();
         try {
-            mm = new MessageManager();
-            listModel.addAll(mm.getStudentMessages()); //fix
+            
+            listModel.addAll(AppManager.messageManager.getStudentMessages()); //fix
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "SQL error");
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -835,7 +835,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         sentMessagesJList.setModel(listModel);
         DefaultListModel<String> listModel1 = new DefaultListModel<>();
         try {
-            listModel1.addAll(mm.getAdminMessages());
+            listModel1.addAll(AppManager.messageManager.getAdminMessages());
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "SQL error");
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);

@@ -4,9 +4,10 @@
  */
 package UI;
 
+import Backend.AppManager;
 import Backend.Student;
 import Backend.StudentManager;
-import backend.DB;
+import Backend.DB;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,14 +29,15 @@ public class RegisterStudentUI extends javax.swing.JFrame {
         
         initComponents();
         setLocationRelativeTo(null);
+        
         try {
-            DB.init();
+            AppManager.init();//remeber only for testing
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(RegisterStudentUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(RegisterStudentUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        sm = new StudentManager();
+        
                 
          DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>();
 		String[] grade = {"8", "9", "10","11","12"};
@@ -233,12 +235,12 @@ public class RegisterStudentUI extends javax.swing.JFrame {
         String surname = surnameInput.getText();
         String password = passwordInput.getText();
         String grade = (String)gradeInput.getSelectedItem();
-        String username = sm.createUsername(name, surname);
+        String username = AppManager.studentManager.createUsername(name, surname);
 
         Student s = new Student(name, surname, password, grade, username);
 
         try {
-            sm.addStudents(s);
+            AppManager.studentManager.addStudents(s);
         } catch (SQLException ex) {
             Logger.getLogger(RegisterStudentUI.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("not found");
@@ -260,7 +262,7 @@ public class RegisterStudentUI extends javax.swing.JFrame {
         //anyway to relate to both?
         String name = nameInput.getText();
         String surname = surnameInput.getText();
-        String username = sm.createUsername(name, surname);
+        String username = AppManager.studentManager.createUsername(name, surname);
         usernameOut.setText(username);
     }//GEN-LAST:event_surnameInputKeyReleased
 

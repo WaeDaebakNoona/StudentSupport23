@@ -4,7 +4,7 @@
  */
 package Backend;
 
-import backend.DB;
+import Backend.DB;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,7 +18,6 @@ public class MessageManager {
     private Message[] messages = new Message[200];
 
     private int messagesSize;
-    private DB db;
 
     public void addStudentMessage(Message m) throws ClassNotFoundException, SQLException {
         messagesSize = 10;
@@ -33,18 +32,6 @@ public class MessageManager {
 //        messagesSize++;
     }
 
-    public String displayStudentMessage() throws SQLException, ClassNotFoundException {
-
-        String query = "SELECT * FROM naritaaDB.StudentMessagestbl;";
-        ResultSet rs = db.query(query);
-        String output = "";
-        while (rs.next()) {
-            output += rs.getString("Topic") + ", ";
-            output += rs.getString("Message") + "\n";
-            output += "\n";
-        }
-        return output;
-    }
 
     public void addAdminMessage(String s, String message) throws ClassNotFoundException, SQLException {
         //adds message from admin into adminmessages table

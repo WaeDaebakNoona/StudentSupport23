@@ -4,7 +4,7 @@
  */
 package Backend;
 
-import backend.DB;
+import Backend.DB;
 import java.awt.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -87,5 +87,19 @@ public class StudentManager {
         return currentStudent;
     }
 
+    public Student getStudentInfo(String user) throws SQLException{
+        String query = "SELECET * FROM naritaaDB.Studentstbl WHERE Username like '" + user+ "';";
+        ResultSet rs = DB.instance.query(query);
+        while(rs.next()){
+            String name = rs.getString("Name");
+            String surname = rs.getString("Surname");
+            String grade = rs.getString("Grade");
+            String username = rs.getString("Username");
+            String password = rs.getString("Password");
+            
+            // = new Student(name, surname, grade, username, password);
+        }
+        return ;
+    }
     
 }
