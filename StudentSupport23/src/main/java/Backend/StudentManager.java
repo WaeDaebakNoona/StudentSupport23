@@ -18,7 +18,6 @@ public class StudentManager {
     private Student[] students = new Student[100];
     private int studentSize = 0;
     
-    private String currentStudent = "";
     
     
     public void addStudents(Student s) throws SQLException, ClassNotFoundException{
@@ -73,19 +72,8 @@ public class StudentManager {
         return bool;
     }//end of method
     
-    //works in my head, dont know if it actually works
-    public void setCurrentStudent(String student){
-        
-        for (int i = 0; i < students.length; i++) {
-            if(students[i].equals(student)){
-                currentStudent = students[i].getUsername();
-            } 
-        }
-       
-    }
-    public String getCurrentStudent(){
-        return currentStudent;
-    }
+    
+    
 
     public Student getStudentInfo(String user) throws SQLException{
         String query = "SELECET * FROM naritaaDB.Studentstbl WHERE Username like '" + user+ "';";
@@ -97,9 +85,10 @@ public class StudentManager {
             String username = rs.getString("Username");
             String password = rs.getString("Password");
             
-            // = new Student(name, surname, grade, username, password);
+           students[studentSize] = new Student(name, surname, grade, username, password);
+           
         }
-        return ;
+        return students[studentSize];
     }
     
 }

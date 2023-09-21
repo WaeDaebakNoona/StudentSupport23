@@ -45,7 +45,7 @@ public class AdminMainUI extends javax.swing.JFrame {
         }
 
         DefaultListModel<String> listModel = new DefaultListModel<>();
-        
+        //populate jlist with admin messages
         try {
             listModel.addAll(AppManager.messageManager.getAdminMessages());
         } catch (SQLException ex) {
@@ -53,11 +53,13 @@ public class AdminMainUI extends javax.swing.JFrame {
             Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         sentJlist.setModel(listModel);
+        
         DefaultListModel<String> listModel1 = new DefaultListModel<>();
+        //populate jlist with student messages
         try {
             listModel1.addAll(AppManager.messageManager.getStudentMessages());
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " SQL error");
+            JOptionPane.showMessageDialog(null, "SQL error");
             Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
 
         }
@@ -133,6 +135,7 @@ public class AdminMainUI extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         statsJlist = new javax.swing.JList<>();
         statsViewButton = new javax.swing.JButton();
+        searchButton = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
@@ -341,6 +344,11 @@ public class AdminMainUI extends javax.swing.JFrame {
 
         refreshRecLabel.setForeground(new java.awt.Color(0, 0, 0));
         refreshRecLabel.setText("Refresh");
+        refreshRecLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                refreshRecLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -401,11 +409,15 @@ public class AdminMainUI extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Concern catagory:");
 
+        topicCombo.setBackground(new java.awt.Color(187, 187, 187));
+        topicCombo.setForeground(new java.awt.Color(0, 0, 0));
         topicCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Sort by topic:");
 
+        statsJlist.setBackground(new java.awt.Color(255, 255, 255));
+        statsJlist.setForeground(new java.awt.Color(0, 0, 0));
         statsJlist.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -413,12 +425,27 @@ public class AdminMainUI extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(statsJlist);
 
+        statsViewButton.setBackground(new java.awt.Color(187, 187, 187));
+        statsViewButton.setForeground(new java.awt.Color(0, 0, 0));
         statsViewButton.setText("VIEW");
+
+        searchButton.setBackground(new java.awt.Color(187, 187, 187));
+        searchButton.setForeground(new java.awt.Color(0, 0, 0));
+        searchButton.setText("search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(statsViewButton)
+                .addGap(32, 32, 32))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -427,16 +454,14 @@ public class AdminMainUI extends javax.swing.JFrame {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(35, 35, 35)
-                                .addComponent(topicCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(topicCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(searchButton))
                             .addComponent(jLabel1)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
+                        .addGap(14, 14, 14)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(statsViewButton)
-                .addGap(32, 32, 32))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,10 +471,11 @@ public class AdminMainUI extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(topicCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addComponent(searchButton))
+                .addGap(44, 44, 44)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(statsViewButton)
                 .addGap(22, 22, 22))
         );
@@ -583,8 +609,38 @@ public class AdminMainUI extends javax.swing.JFrame {
 
     private void refreshLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshLabelMouseClicked
         // TODO add your handling code here:
-
+        DefaultListModel<String> listModelRefresh = new DefaultListModel<>();
+        try {
+            listModelRefresh.addAll(AppManager.messageManager.getAdminMessages());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " SQL error");
+            Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        sentJlist.setModel(listModelRefresh);
     }//GEN-LAST:event_refreshLabelMouseClicked
+
+    private void refreshRecLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshRecLabelMouseClicked
+        // TODO add your handling code here:
+        DefaultListModel<String> listModelRefreshRec = new DefaultListModel<>();
+        try {
+            listModelRefreshRec.addAll(AppManager.messageManager.getStudentMessages());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " SQL error");
+            Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        receivedJlist.setModel(listModelRefreshRec);
+    }//GEN-LAST:event_refreshRecLabelMouseClicked
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        String topic = (String)topicCombo.getSelectedItem();
+        try {
+            AppManager.messageManager.getMessageFromTopic(topic);
+        } catch (SQLException ex) {
+            System.out.println("errorrrrrr");
+            Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_searchButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -650,6 +706,7 @@ public class AdminMainUI extends javax.swing.JFrame {
     private javax.swing.JList<String> receivedJlist;
     private javax.swing.JLabel refreshLabel;
     private javax.swing.JLabel refreshRecLabel;
+    private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextfield;
     private javax.swing.JButton sendButton;
     private javax.swing.JList<String> sentJlist;

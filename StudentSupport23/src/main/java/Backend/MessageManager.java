@@ -75,7 +75,7 @@ public class MessageManager {
         //gets all information of message from student
         
         String output = "";
-        String qur = "SELECT * FROM naritaaDB.StudentMessagestbl WHERE Header = '" + value + "';";
+        String qur = "SELECT * FROM naritaaDB.StudentMessagestbl WHERE Header ='" +  value + "';";
         
         ResultSet rss = DB.instance.query(qur);
         while(rss.next()){
@@ -114,7 +114,16 @@ public class MessageManager {
         return output;
     }//end of method
     
-    
+    public ArrayList<String> getMessageFromTopic(String value) throws SQLException{
+         ArrayList<String> list = new ArrayList<String>();
+        String query = "SELECT * FROM naritaaDB.StudentMessagestbl WHERE Topic = '" + value + "';";
+        ResultSet rs = DB.instance.query(query);
+        
+        while(rs.next()){
+            list.add(rs.getString("Header"));
+        }
+        return list;
+    }
     
 }//end of class
 

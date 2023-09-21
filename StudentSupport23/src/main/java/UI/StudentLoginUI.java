@@ -18,15 +18,13 @@ import javax.swing.JOptionPane;
  */
 public class StudentLoginUI extends javax.swing.JFrame {
 
-    
     /**
      * Creates new form StudentLoginUI
      */
     public StudentLoginUI() {
         initComponents();
         setLocationRelativeTo(null);
-        
-        
+
         try {
             AppManager.init();//only for testing. only have this in starting screen
         } catch (ClassNotFoundException ex) {
@@ -34,9 +32,7 @@ public class StudentLoginUI extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(StudentLoginUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-       
-       
+
     }//end of constructo
 
     /**
@@ -118,7 +114,6 @@ public class StudentLoginUI extends javax.swing.JFrame {
         jPanel1.add(passwordInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 217, 200, -1));
 
         errorLabel.setForeground(new java.awt.Color(204, 0, 0));
-        errorLabel.setText("jLabel1");
         jPanel1.add(errorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 257, -1, -1));
 
         backButton.setBackground(new java.awt.Color(187, 187, 187));
@@ -142,31 +137,34 @@ public class StudentLoginUI extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-         //sm.setCurrentStudent(usernameInput.getText());
+        //sm.setCurrentStudent(usernameInput.getText());
         //current user
         String user = usernameInput.getText();
         String password = passwordInput.getText();
-        
+
         try {
-            if (user.isBlank() || password.isBlank()){
+            if (user.isBlank() || password.isBlank()) {
                 errorLabel.setText("Error: empty fields");
-            }
-            else if(AppManager.studentManager.checkValidity(user, password)){ // if username and password are correct
+            } else if (AppManager.studentManager.checkValidity(user, password)) { // if username and password are correct
                 dispose();
                 new StudentMainUI().setVisible(true);
-            }
-           
-            else{
+                //
+                try {
+                    AppManager.setCurrentStudent(AppManager.studentManager.getStudentInfo(user));
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(StudentLoginUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //
+            } else {
                 errorLabel.setText("Error: Incorrect username or passsword");
             }
         } catch (SQLException ex) {
             System.out.println("SQL error");
             Logger.getLogger(StudentLoginUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        AppManager.studentManager.getStudentInfo(user);
-        
-        AppManager.setCurrentStudent(s);
-       //end of method 
+
+
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void passwordInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordInputActionPerformed
