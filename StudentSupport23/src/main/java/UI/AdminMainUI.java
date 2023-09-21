@@ -65,8 +65,27 @@ public class AdminMainUI extends javax.swing.JFrame {
         DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(topics);
         topicCombo.setModel(comboModel);
         
-//        String numOfMessages = mm.getNumMessages();
-//        totalMessagesOutput.setText(numOfMessages);
+        //populate combo box with student usernames
+        sm = new StudentManager();
+        DefaultComboBoxModel<String>studentList = new DefaultComboBoxModel<>();
+        try {
+            studentList.addAll(sm.getStudentsUsernameList());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " SQL error");
+            Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        studentComboBox.setModel(studentList);
+        
+        String numOfMessages;
+        //error please help
+        try {
+            numOfMessages = mm.getNumMessages();
+            totalMessagesOutput.setText(numOfMessages);
+        } catch (SQLException ex) {
+            System.out.println("num error ");
+            Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
         
         
@@ -96,9 +115,9 @@ public class AdminMainUI extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         messageInput = new javax.swing.JTextArea();
         sendButton = new javax.swing.JButton();
-        discardButton = new javax.swing.JButton();
+        clearButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        studentTextfield = new javax.swing.JTextField();
+        studentComboBox = new javax.swing.JComboBox<>();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         sentJlist = new javax.swing.JList<>();
@@ -181,6 +200,8 @@ public class AdminMainUI extends javax.swing.JFrame {
         messageInput.setRows(5);
         jScrollPane2.setViewportView(messageInput);
 
+        sendButton.setBackground(new java.awt.Color(187, 187, 187));
+        sendButton.setForeground(new java.awt.Color(0, 0, 0));
         sendButton.setText("Send");
         sendButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,18 +209,21 @@ public class AdminMainUI extends javax.swing.JFrame {
             }
         });
 
-        discardButton.setText("Discard");
-        discardButton.addActionListener(new java.awt.event.ActionListener() {
+        clearButton.setBackground(new java.awt.Color(187, 187, 187));
+        clearButton.setForeground(new java.awt.Color(0, 0, 0));
+        clearButton.setText("Clear");
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                discardButtonActionPerformed(evt);
+                clearButtonActionPerformed(evt);
             }
         });
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("To:");
 
-        studentTextfield.setBackground(new java.awt.Color(255, 255, 255));
-        studentTextfield.setForeground(new java.awt.Color(0, 0, 0));
+        studentComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        studentComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        studentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -209,29 +233,29 @@ public class AdminMainUI extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(discardButton)
+                        .addComponent(clearButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(sendButton))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(studentTextfield)))
+                        .addComponent(studentComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(studentTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(studentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sendButton)
-                    .addComponent(discardButton))
+                    .addComponent(clearButton))
                 .addGap(20, 20, 20))
         );
 
@@ -239,6 +263,8 @@ public class AdminMainUI extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(193, 171, 173));
 
+        sentJlist.setBackground(new java.awt.Color(255, 255, 255));
+        sentJlist.setForeground(new java.awt.Color(0, 0, 0));
         sentJlist.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -246,6 +272,8 @@ public class AdminMainUI extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(sentJlist);
 
+        viewButton.setBackground(new java.awt.Color(187, 187, 187));
+        viewButton.setForeground(new java.awt.Color(0, 0, 0));
         viewButton.setText("VIEW");
         viewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,6 +308,8 @@ public class AdminMainUI extends javax.swing.JFrame {
 
         jPanel9.setBackground(new java.awt.Color(193, 171, 173));
 
+        receivedJlist.setBackground(new java.awt.Color(255, 255, 255));
+        receivedJlist.setForeground(new java.awt.Color(0, 0, 0));
         receivedJlist.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -287,6 +317,8 @@ public class AdminMainUI extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(receivedJlist);
 
+        viewReceivedButton.setBackground(new java.awt.Color(187, 187, 187));
+        viewReceivedButton.setForeground(new java.awt.Color(0, 0, 0));
         viewReceivedButton.setText("VIEW");
         viewReceivedButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -473,8 +505,10 @@ public class AdminMainUI extends javax.swing.JFrame {
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
         // TODO add your handling code here:
-        String studentIn = studentTextfield.getText();
+        String studentIn = (String)studentComboBox.getSelectedItem();
         String messageIn = messageInput.getText();
+        
+        
 
     }//GEN-LAST:event_sendButtonActionPerformed
 
@@ -486,11 +520,11 @@ public class AdminMainUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchTextfieldKeyReleased
 
-    private void discardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardButtonActionPerformed
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         // TODO add your handling code here:
         messageInput.setText(" ");
-        studentTextfield.setText(" ");
-    }//GEN-LAST:event_discardButtonActionPerformed
+        
+    }//GEN-LAST:event_clearButtonActionPerformed
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
         // TODO add your handling code here:
@@ -559,7 +593,7 @@ public class AdminMainUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton discardButton;
+    private javax.swing.JButton clearButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -590,7 +624,7 @@ public class AdminMainUI extends javax.swing.JFrame {
     private javax.swing.JList<String> sentJlist;
     private javax.swing.JList<String> statsJlist;
     private javax.swing.JButton statsViewButton;
-    private javax.swing.JTextField studentTextfield;
+    private javax.swing.JComboBox<String> studentComboBox;
     private javax.swing.JComboBox<String> topicCombo;
     private javax.swing.JLabel totalMessagesOutput;
     private javax.swing.JButton viewButton;

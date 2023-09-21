@@ -16,6 +16,7 @@ public class Message {
     private String header;
     private String subTopic;
     
+    //for student
 //String currUser,
     public Message( String topic, String sub, String head, String note) {
         //user = currUser;

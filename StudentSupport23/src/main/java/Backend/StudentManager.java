@@ -47,10 +47,6 @@ public class StudentManager {
         while(rs.next()){
             list.add(rs.getString("Username"));
         }
-        
-        //SELECT AVG(age) FROM Students;
-        //rs.next();
-        //double avg = rs.getDouble(1);
        
         return list;
     }

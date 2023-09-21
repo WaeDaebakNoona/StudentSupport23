@@ -119,7 +119,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         receivedJlist = new javax.swing.JList<>();
-        jButton2 = new javax.swing.JButton();
+        viewReceivedButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         refreshReceiveScreenButton = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -416,12 +416,12 @@ public class StudentMainUI extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(receivedJlist);
 
-        jButton2.setBackground(new java.awt.Color(187, 187, 187));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("VIEW");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        viewReceivedButton.setBackground(new java.awt.Color(187, 187, 187));
+        viewReceivedButton.setForeground(new java.awt.Color(0, 0, 0));
+        viewReceivedButton.setText("VIEW");
+        viewReceivedButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                viewReceivedButtonActionPerformed(evt);
             }
         });
 
@@ -441,7 +441,7 @@ public class StudentMainUI extends javax.swing.JFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                        .addComponent(viewReceivedButton))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(refreshReceiveScreenButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -458,7 +458,7 @@ public class StudentMainUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(viewReceivedButton)
                 .addGap(21, 21, 21))
         );
 
@@ -781,8 +781,6 @@ public class StudentMainUI extends javax.swing.JFrame {
         String topic = (String) topicBox.getSelectedItem();
         String subtopic = (String) subtopicCombobox.getSelectedItem();
 
-        System.out.println(message + topic); //only for testing
-
         mm = new MessageManager();
         m = new Message(topic, subtopic, header, message);
 
@@ -811,9 +809,18 @@ public class StudentMainUI extends javax.swing.JFrame {
         // JOptionPane.showMessageDialog(null, "hellloooo"); //not gonna use this, maybe popup menu or sum?
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void viewReceivedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewReceivedButtonActionPerformed
+        String getTopic = (String)receivedJlist.getSelectedValue();
+        try {
+            // TODO add your handling code here:
+            
+            String messageInfo = mm.getAdminMessage(getTopic);
+            JOptionPane.showMessageDialog(null, messageInfo);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR");
+            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_viewReceivedButtonActionPerformed
 
     private void refreshSentScreenButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshSentScreenButtonMouseClicked
         // TODO add your handling code here:
@@ -880,7 +887,6 @@ public class StudentMainUI extends javax.swing.JFrame {
     private javax.swing.JButton cancelButton;
     private javax.swing.JTextField gradeTextfield;
     private javax.swing.JLabel iconLabel;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -934,5 +940,6 @@ public class StudentMainUI extends javax.swing.JFrame {
     private javax.swing.JButton updateButton;
     private javax.swing.JTextField usernameTextfield;
     private javax.swing.JButton viewButton;
+    private javax.swing.JButton viewReceivedButton;
     // End of variables declaration//GEN-END:variables
 }
