@@ -54,29 +54,28 @@ public class StudentManager {
     //compares username and password in input to database
     public boolean checkValidity(String username, String password) throws SQLException{
         
-        Boolean bool = false;
-        String query = "SELECT Username, Password FROM naritaaDB.Studentstbl;";
+        boolean valid = false;
+        String query = "SELECT * FROM naritaaDB.Studentstbl;";
         ResultSet rs = DB.instance.query(query);
-        String user = " ";
-        String pass = " ";
+        
         while(rs.next()){
-            user = rs.getString("Username");
-            pass = rs.getString("Password");
+            String user = rs.getString("Username");
+            String pass = rs.getString("Password");
             
-            if(username.equalsIgnoreCase(user)|| password.equals(pass)){
-                bool = true;
+            if(username.equalsIgnoreCase(user) && password.equals(pass)){
+                valid = true;
+                
                 break;
             }
+            
+         
         }
         
-        return bool;
+        return valid;
     }//end of method
-    
-    
-    
 
     public Student getStudentInfo(String user) throws SQLException{
-        String query = "SELECET * FROM naritaaDB.Studentstbl WHERE Username like '" + user+ "';";
+        String query = "SELECT * FROM naritaaDB.Studentstbl WHERE Username like '" + user+ "';";
         ResultSet rs = DB.instance.query(query);
         while(rs.next()){
             String name = rs.getString("Name");
@@ -89,6 +88,11 @@ public class StudentManager {
            
         }
         return students[studentSize];
+    }//end of method
+    
+    public void getCurrentStudent(){
+        
     }
+   
     
 }

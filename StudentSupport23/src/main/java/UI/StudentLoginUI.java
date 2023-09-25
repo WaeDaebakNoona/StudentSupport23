@@ -137,7 +137,7 @@ public class StudentLoginUI extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        //sm.setCurrentStudent(usernameInput.getText());
+        
         //current user
         String user = usernameInput.getText();
         String password = passwordInput.getText();
@@ -150,6 +150,7 @@ public class StudentLoginUI extends javax.swing.JFrame {
                 new StudentMainUI().setVisible(true);
                 //
                 try {
+                    /////////////////////////////////////////////////////////
                     AppManager.setCurrentStudent(AppManager.studentManager.getStudentInfo(user));
 
                 } catch (SQLException ex) {
