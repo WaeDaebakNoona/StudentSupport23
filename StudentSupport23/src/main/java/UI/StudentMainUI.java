@@ -77,11 +77,12 @@ public class StudentMainUI extends javax.swing.JFrame {
 
         //populate text fields with user's details
         
-        nameTextfield.setText("");
-        surnameTextfield.setText("");
-        usernameTextfield.setText("");
-        passwordTextfield.setText("");
-        gradeTextfield.setText("");
+        System.out.println(AppManager.studentManager.getCurrentStudent());
+        nameTextfield.setText(AppManager.studentManager.getCurrentStudent().getName());
+        surnameTextfield.setText(AppManager.studentManager.getCurrentStudent().getSurname());
+        usernameTextfield.setText(AppManager.studentManager.getCurrentStudent().getUsername());
+        passwordTextfield.setText(AppManager.studentManager.getCurrentStudent().getPassword());
+        gradeTextfield.setText(AppManager.studentManager.getCurrentStudent().getGradeClass());
     }//end of main
 
     /**
@@ -501,15 +502,19 @@ public class StudentMainUI extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Grade:");
 
+        nameTextfield.setEditable(false);
         nameTextfield.setBackground(new java.awt.Color(255, 255, 255));
         nameTextfield.setForeground(new java.awt.Color(0, 0, 0));
 
+        surnameTextfield.setEditable(false);
         surnameTextfield.setBackground(new java.awt.Color(255, 255, 255));
         surnameTextfield.setForeground(new java.awt.Color(0, 0, 0));
 
+        passwordTextfield.setEditable(false);
         passwordTextfield.setBackground(new java.awt.Color(255, 255, 255));
         passwordTextfield.setForeground(new java.awt.Color(0, 0, 0));
 
+        usernameTextfield.setEditable(false);
         usernameTextfield.setBackground(new java.awt.Color(255, 255, 255));
         usernameTextfield.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -555,12 +560,12 @@ public class StudentMainUI extends javax.swing.JFrame {
                                 .addComponent(jLabel12)
                                 .addComponent(jLabel13))
                             .addGap(18, 18, 18)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(nameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(surnameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(usernameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(gradeTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(nameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(surnameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(usernameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(passwordTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(gradeTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(jLabel17)
@@ -817,11 +822,11 @@ public class StudentMainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void viewReceivedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewReceivedButtonActionPerformed
-        String getTopic = (String)receivedJlist.getSelectedValue();
+        String getMessage = (String)receivedJlist.getSelectedValue();
         try {
             // TODO add your handling code here:
             
-            String messageInfo = AppManager.messageManager.getAdminMessage(getTopic);
+            String messageInfo = AppManager.messageManager.getAdminMessage(getMessage);
             JOptionPane.showMessageDialog(null, messageInfo);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR");

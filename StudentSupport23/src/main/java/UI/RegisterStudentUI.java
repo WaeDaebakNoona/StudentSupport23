@@ -237,10 +237,10 @@ public class RegisterStudentUI extends javax.swing.JFrame {
         String grade = (String)gradeInput.getSelectedItem();
         String username = AppManager.studentManager.createUsername(name, surname);
 
-        Student s = new Student(name, surname, password, grade, username);
+        //Student s = new Student(name, surname, password, grade, username);
 
         try {
-            AppManager.studentManager.addStudents(s);
+            AppManager.studentManager.addStudents(name, surname,grade, username,password);
         } catch (SQLException ex) {
             Logger.getLogger(RegisterStudentUI.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("not found");

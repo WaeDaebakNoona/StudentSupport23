@@ -41,7 +41,7 @@ public class AdminLoginUI extends javax.swing.JFrame {
         backButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        ouputLabel = new javax.swing.JLabel();
+        errorLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,6 +75,8 @@ public class AdminLoginUI extends javax.swing.JFrame {
 
         jLabel5.setText("jLabel5");
 
+        errorLabel.setForeground(new java.awt.Color(204, 0, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -107,8 +109,8 @@ public class AdminLoginUI extends javax.swing.JFrame {
                         .addGap(201, 201, 201)
                         .addComponent(jLabel5))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(ouputLabel)))
+                        .addGap(196, 196, 196)
+                        .addComponent(errorLabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -135,9 +137,9 @@ public class AdminLoginUI extends javax.swing.JFrame {
                 .addComponent(passwordInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(loginButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ouputLabel)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(errorLabel)
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -170,7 +172,7 @@ public class AdminLoginUI extends javax.swing.JFrame {
             new AdminMainUI().setVisible(true);
         }
         else{
-            ouputLabel.setText("Incorrect username or password");
+            errorLabel.setText("Incorrect username or password");
         }
             
     }//GEN-LAST:event_loginButtonActionPerformed
@@ -212,6 +214,7 @@ public class AdminLoginUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JLabel errorLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -219,7 +222,6 @@ public class AdminLoginUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loginButton;
-    private javax.swing.JLabel ouputLabel;
     private javax.swing.JTextField passwordInput;
     private javax.swing.JTextField usernameInput;
     // End of variables declaration//GEN-END:variables

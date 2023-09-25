@@ -9,6 +9,7 @@ package Backend;
  * @author Narita
  */
 public class Student {
+    private int id;
     private String name;
     private String surname;
     private String password;
@@ -16,12 +17,21 @@ public class Student {
     private String username;
 
     
-    public Student(String inN, String inS, String inP, String inG, String inU) {
+    public Student(int inId,String inN, String inS, String inP, String inG, String inU) {
+        id = inId;
         this.name = inN;
         this.surname = inS;
         this.password = inP;
         this.gradeClass = inG;
         this.username = inU;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -68,13 +78,6 @@ public class Student {
         String fullName = getName() + " " + getSurname();
         return fullName;
     }
-    //using name and surname of the student to create the reddam email which is their username
-//    public String createUsername(String name, String surname){
-//        String output = "";
-//        String fname = name.toLowerCase();
-//        String lname = surname.toLowerCase();
-//        output = fname + "." + lname + "@reddam.house";
-//        return output;
-//    }
+
     
 }

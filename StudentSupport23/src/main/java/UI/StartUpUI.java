@@ -86,7 +86,7 @@ public class StartUpUI extends javax.swing.JFrame {
 
         backButton.setBackground(new java.awt.Color(200, 200, 200));
         backButton.setForeground(new java.awt.Color(0, 0, 0));
-        backButton.setText("<");
+        backButton.setText("X");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);

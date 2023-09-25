@@ -114,7 +114,7 @@ public class StudentLoginUI extends javax.swing.JFrame {
         jPanel1.add(passwordInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 217, 200, -1));
 
         errorLabel.setForeground(new java.awt.Color(204, 0, 0));
-        jPanel1.add(errorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 257, -1, -1));
+        jPanel1.add(errorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
 
         backButton.setBackground(new java.awt.Color(187, 187, 187));
         backButton.setForeground(new java.awt.Color(0, 0, 0));
@@ -145,18 +145,9 @@ public class StudentLoginUI extends javax.swing.JFrame {
         try {
             if (user.isBlank() || password.isBlank()) {
                 errorLabel.setText("Error: empty fields");
-            } else if (AppManager.studentManager.checkValidity(user, password)) { // if username and password are correct
+            } else if (AppManager.studentManager.login(user, password)) { // if username and password are correct
                 dispose();
                 new StudentMainUI().setVisible(true);
-                //
-                try {
-                    /////////////////////////////////////////////////////////
-                    AppManager.setCurrentStudent(AppManager.studentManager.getStudentInfo(user));
-
-                } catch (SQLException ex) {
-                    Logger.getLogger(StudentLoginUI.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                //
             } else {
                 errorLabel.setText("Error: Incorrect username or passsword");
             }

@@ -14,19 +14,10 @@ public class AppManager {
     public static MessageManager messageManager;
     public static StudentManager studentManager;
     
-    private static Student currentStudent;
     
     public static void init() throws ClassNotFoundException, SQLException{
         messageManager = new MessageManager();
         studentManager = new StudentManager();
         DB.init();
-    }
-    
-    public static void setCurrentStudent(Student s){
-        currentStudent = s;
-    }
-    
-    public static Student getCurrentStudent(){
-        return currentStudent;
     }
 }

@@ -25,36 +25,31 @@ public class MessageManager {
         DB.instance.update(queryStr);
         messages = new Message[messagesSize];
         messagesSize++;
-
-//        String queryStr = "INSERT INTO naritaaDB.StudentMessagestbl(User, Topic, Subtopic, Header, Message)Values('" + m.getUser() + "','" + m.getTopic() + "','" + m.getSubTopic() + "','" + m.getHeader() +  "','" + m.getNote() +"');";
-//        DB.instance.update(queryStr);
-//        messages = new Message[messagesSize];
-//        messagesSize++;
     }
 
-    public void addAdminMessage(String s, String message) throws ClassNotFoundException, SQLException {
+    public void addAdminMessage(String username, String message) throws ClassNotFoundException, SQLException {
         //adds message from admin into adminmessages table
         //get username: username is their name and surname @reddam.house
-
-        String query = "INSERT INTO naritaaDB.AdminMessagestbl(Student, Message)Values('" + s + "','" + message + "');";
+        String getStudentIDquery = "SELECT StudentId FROM naritaaDB.Studentstbl where Username like '" + username + "';";
+        ResultSet rs = DB.instance.query(getStudentIDquery);
+        rs.next();
+        String query = "INSERT INTO naritaaDB.AdminMessagestbl(StudentID, Message)Values('" + rs.getInt(1) + "','" + message + "');";
         DB.instance.update(query);
     }
 
     public ArrayList<String> getStudentMessages() throws SQLException {
-        // returns an array of all student messages
+        // returns an array of all student messages ///////
         ArrayList<String> list = new ArrayList<String>();
-        String query = "SELECT Message, Header FROM naritaaDB.StudentMessagestbl;";
+        String query = "SELECT * FROM naritaaDB.StudentMessagestbl WHERE StudentMessagesID = '"  + "';";
         ResultSet rs = DB.instance.query(query);
         while (rs.next()) {
             list.add(rs.getString("Header"));
-
         }
         return list;
     }
 
-    //get an aray list of all of the admin messages
     public ArrayList<String> getAdminMessages() throws SQLException {
-
+        //get an aray list of all of the admin messages
         ArrayList<String> list = new ArrayList<String>();
         String query = "SELECT * FROM naritaaDB.AdminMessagestbl;";
         ResultSet rs = DB.instance.query(query);
@@ -71,31 +66,35 @@ public class MessageManager {
     }
 
     public String getStudentMessage(String value) throws SQLException {
-        //gets all information of message from student
+        //gets all information of a message from student
 
         String output = "";
         String qur = "SELECT * FROM naritaaDB.StudentMessagestbl WHERE Header ='" + value + "';";
 
         ResultSet rss = DB.instance.query(qur);
         while (rss.next()) {
+            String id = rss.getString("StudentId");
             String title = rss.getString("Header");
             String topic = rss.getString("Topic");
             String subtopic = rss.getString("Subtopic");
             String message = rss.getString("Message");
-            output += "Title: " + title + "\nTopic: " + topic + "\nSubtopic: " + subtopic + "\nMessages: " + message;
+            output += "StudentID: " + id + "\nTitle: " + title + "\nTopic: " + topic + "\nSubtopic: " + subtopic + "\nMessages: " + message;
 
         }
         return output;
     }//end of getStudentMessage method
 
     public String getAdminMessage(String value) throws SQLException {
+        //gets information from a message
+        //value is admin message id
         String output = "";
         String query = "SELECT * FROM naritaaDB.AdminMessagestbl WHERE AdminMessagesID = '" + value + "';";
         ResultSet rs = DB.instance.query(query);
+        String get = "";
         while (rs.next()) {
             String messageID = rs.getString("AdminMessagesID");
             String message = rs.getString("Message");
-            output += "Student: " + messageID + "\nMessage: " + message;
+            output += "MessageID: " + messageID + "\nMessage: " + message;
         }
 
         return output;
