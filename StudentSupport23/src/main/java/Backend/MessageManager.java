@@ -21,7 +21,7 @@ public class MessageManager {
 
     public void addStudentMessage(Message m, int studentId) throws ClassNotFoundException, SQLException {
         messagesSize = 10;
-        String queryStr = "INSERT INTO naritaaDB.StudentMessagestbl(StudentID, Topic, Subtopic, Header, Message)Values(" + studentId +",'" + m.getTopic() + "','" + m.getSubTopic() + "','" + m.getHeader() + "','" + m.getNote() + "');";
+        String queryStr = "INSERT INTO naritaaDB.StudentMessagestbl(StudentID, Topic, Subtopic, Header, Message)Values(" + studentId + ",'" + m.getTopic() + "','" + m.getSubTopic() + "','" + m.getHeader() + "','" + m.getNote() + "');";
         DB.instance.update(queryStr);
         messages = new Message[messagesSize];
         messagesSize++;
@@ -42,10 +42,15 @@ public class MessageManager {
         ArrayList<String> list = new ArrayList<String>();
         String query = "SELECT * FROM naritaaDB.StudentMessagestbl;";
         ResultSet rs = DB.instance.query(query);
-
+        int studentID = 0;
         while (rs.next()) {
             list.add(rs.getString("Header"));
-
+            studentID = rs.getInt("StudentID");
+            String studentUsernamequery = "SELECT Username from naritaaDB.Studentstbl WHERE StudentId =" + studentID + ";";
+            ResultSet rss = DB.instance.query(studentUsernamequery);
+            rss.next();
+            String username = rss.getString("Username");
+            //list.add(rs.getString("Header")+ "|" + username);
         }
 
         return list;
@@ -59,7 +64,7 @@ public class MessageManager {
 
         while (rs.next()) {
             list.add(rs.getString("AdminMessagesID"));
-
+            
         }
 
         return list;
@@ -75,7 +80,7 @@ public class MessageManager {
         }
         return list;
     }//end of method
-    
+
     public ArrayList<String> getSpecificAdminMessage(int studentID) throws SQLException {
         //gets the messages sent from that specific student
         ArrayList<String> list = new ArrayList<String>();
@@ -122,7 +127,16 @@ public class MessageManager {
         while (rs.next()) {
             String messageID = rs.getString("AdminMessagesID");
             String message = rs.getString("Message");
-            output += "MessageID: " + messageID + "\nMessage: " + message;
+            
+            int studentID = rs.getInt("StudentID");
+            String usernameQuery = "SELECT Username from naritaaDB.Studentstbl WHERE StudentId =" + studentID + ";";
+            ResultSet rss = DB.instance.query(usernameQuery);
+            rss.next();
+            String username = rss.getString("Username");
+            
+            output += "MessageID: " + messageID + "\nStudent: " + username+ "\nMessage: " + message ;
+            
+            
         }
 
         return output;

@@ -60,18 +60,17 @@ public class StudentManager {
         String query = "SELECT * FROM naritaaDB.Studentstbl;";
         ResultSet rs = DB.instance.query(query);
         while (rs.next()) {
-            
+
             int id = rs.getInt("StudentId");
             String name = rs.getString("Name");
             String surname = rs.getString("Surname");
             String user = rs.getString("Username");
             String pass = rs.getString("Password");
             String grade = rs.getString("Grade");
-            
 
             if (username.equalsIgnoreCase(user) && password.equals(pass)) {
                 valid = true;
-                currentStudent = new Student(id, name, surname, pass , grade, user );
+                currentStudent = new Student(id, name, surname, pass, grade, user);
                 break;
             }
         }
@@ -79,5 +78,28 @@ public class StudentManager {
         return valid;
     }//end of method
 
-    
-}
+    public String getSpecificStudentInfo(String username) throws SQLException {
+        String output = "";
+        String query = "SELECT * FROM naritaaDB.Studentstbl WHERE Username = '" + username + "';";
+        ResultSet rs = DB.instance.query(query);
+        
+        int id;
+        while (rs.next()) {
+
+             id = rs.getInt("StudentId");
+            String name = rs.getString("Name");
+            String surname = rs.getString("Surname");
+            String user = rs.getString("Username");
+            String grade = rs.getString("Grade");
+            
+            String messageQuery = "SELECT count(*) FROM naritaaDB.StudentMessagestbl WHERE StudentID = " + id;
+            ResultSet rss = DB.instance.query(messageQuery);
+            rss.next();
+            
+            output = "\tStudent Information:\n" + "\t----------------------------" + "\nName:" + name + "\nSurname: " + surname + "\nUsername: " + user + "\nGrade: " + grade + "\nTotal Messages sent: " + rss.getInt(1);;
+
+        }
+
+        return output;
+    }//end of method
+}//end of class

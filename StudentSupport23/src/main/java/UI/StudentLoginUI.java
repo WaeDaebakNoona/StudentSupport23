@@ -54,6 +54,7 @@ public class StudentLoginUI extends javax.swing.JFrame {
         passwordInput = new javax.swing.JTextField();
         errorLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -125,6 +126,11 @@ public class StudentLoginUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Constantia", 3, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(68, 68, 68));
+        jLabel1.setText("STUDENT LOGIN");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 350));
 
@@ -213,6 +219,7 @@ public class StudentLoginUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JLabel errorLabel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

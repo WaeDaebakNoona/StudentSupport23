@@ -5,6 +5,11 @@
 package UI;
 
 import Backend.AppManager;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -163,16 +168,23 @@ public class AdminLoginUI extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
-        String username = usernameInput.getText();
-        String password = passwordInput.getText();
-        
-        if(username.equals("Reddam23") && password.equals("1234")){
-            dispose();
-            new AdminMainUI().setVisible(true);
-        }
-        else{
-            errorLabel.setText("Incorrect username or password");
+        try {
+            // TODO add your handling code here:
+            String usernameIn = usernameInput.getText();
+            String passwordIn = passwordInput.getText();
+            
+            Scanner sc = new Scanner(new File("data//adminInfo.txt"));
+            String username = sc.next();
+            String password = sc.next();
+            if(usernameIn.equals(username) && passwordIn.equals(password)){
+                dispose();
+                new AdminMainUI().setVisible(true);
+            }
+            else{
+                errorLabel.setText("Incorrect username or password");
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(AdminLoginUI.class.getName()).log(Level.SEVERE, null, ex);
         }
             
     }//GEN-LAST:event_loginButtonActionPerformed
