@@ -145,7 +145,6 @@ public class StudentMainUI extends javax.swing.JFrame {
         gradeTextfield = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         leaveButton = new javax.swing.JButton();
@@ -533,8 +532,6 @@ public class StudentMainUI extends javax.swing.JFrame {
 
         jLabel15.setText("View your student profile");
 
-        jLabel16.setText("jLabel16");
-
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
         jLabel17.setText("All information is confidential");
 
@@ -563,9 +560,6 @@ public class StudentMainUI extends javax.swing.JFrame {
                             .addComponent(nameTextfield, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(gradeTextfield)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(184, 184, 184)
-                        .addComponent(jLabel16))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(135, 135, 135)
                         .addComponent(jLabel15))
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -580,9 +574,7 @@ public class StudentMainUI extends javax.swing.JFrame {
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(jLabel16)
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
@@ -907,7 +899,6 @@ public class StudentMainUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
