@@ -19,9 +19,9 @@ public class MessageManager {
 
     private int messagesSize;
 
-    public void addStudentMessage(Message m) throws ClassNotFoundException, SQLException {
+    public void addStudentMessage(Message m, int studentId) throws ClassNotFoundException, SQLException {
         messagesSize = 10;
-        String queryStr = "INSERT INTO naritaaDB.StudentMessagestbl(Topic, Subtopic, Header, Message)Values('" + m.getTopic() + "','" + m.getSubTopic() + "','" + m.getHeader() + "','" + m.getNote() + "');";
+        String queryStr = "INSERT INTO naritaaDB.StudentMessagestbl(StudentID, Topic, Subtopic, Header, Message)Values(" + studentId +",'" + m.getTopic() + "','" + m.getSubTopic() + "','" + m.getHeader() + "','" + m.getNote() + "');";
         DB.instance.update(queryStr);
         messages = new Message[messagesSize];
         messagesSize++;
@@ -40,11 +40,14 @@ public class MessageManager {
     public ArrayList<String> getStudentMessages() throws SQLException {
         // returns an array of all student messages ///////
         ArrayList<String> list = new ArrayList<String>();
-        String query = "SELECT * FROM naritaaDB.StudentMessagestbl WHERE StudentMessagesID = '"  + "';";
+        String query = "SELECT * FROM naritaaDB.StudentMessagestbl;";
         ResultSet rs = DB.instance.query(query);
+
         while (rs.next()) {
             list.add(rs.getString("Header"));
+
         }
+
         return list;
     }
 
@@ -53,20 +56,40 @@ public class MessageManager {
         ArrayList<String> list = new ArrayList<String>();
         String query = "SELECT * FROM naritaaDB.AdminMessagestbl;";
         ResultSet rs = DB.instance.query(query);
+
         while (rs.next()) {
             list.add(rs.getString("AdminMessagesID"));
 
         }
+
         return list;
     }//end
 
-    public void updateUserDeatails(String name, String surname, String username, String password, String grade, String id) throws SQLException {
-        String query = "Update naritaaDB.Studentstbl set Name = " + name + ",Surname = " + surname + ",Username = " + username + ",Password = " + ",Grade =" + grade + "where id = " + id + ";";
-        DB.instance.update(query);
-    }
+    public ArrayList<String> getSpecificStudentMessage(int id) throws SQLException {
+        //gets the messages sent from that specific student
+        ArrayList<String> list = new ArrayList<String>();
+        String query = "SELECT * FROM naritaaDB.StudentMessagestbl WHERE StudentID = " + id + ";";
+        ResultSet rs = DB.instance.query(query);
+        while (rs.next()) {
+            list.add(rs.getString("Header"));
+        }
+        return list;
+    }//end of method
+    
+    public ArrayList<String> getSpecificAdminMessage(int studentID) throws SQLException {
+        //gets the messages sent from that specific student
+        ArrayList<String> list = new ArrayList<String>();
+        String query = "SELECT * FROM naritaaDB.AdminMessagestbl WHERE StudentID = " + studentID + ";";
+        ResultSet rs = DB.instance.query(query);
+        while (rs.next()) {
+            list.add(rs.getString("AdminMessagesID"));
+        }
+        return list;
+    }//end of method
 
     public String getStudentMessage(String value) throws SQLException {
         //gets all information of a message from student
+        //this is only for admin
 
         String output = "";
         String qur = "SELECT * FROM naritaaDB.StudentMessagestbl WHERE Header ='" + value + "';";
@@ -78,7 +101,12 @@ public class MessageManager {
             String topic = rss.getString("Topic");
             String subtopic = rss.getString("Subtopic");
             String message = rss.getString("Message");
-            output += "StudentID: " + id + "\nTitle: " + title + "\nTopic: " + topic + "\nSubtopic: " + subtopic + "\nMessages: " + message;
+
+            String getStudentUsername = "SELECT username from naritaaDB.Studentstbl where StudentId = '" + id + "'";
+            ResultSet rs = DB.instance.query(getStudentUsername);
+            rs.next();
+
+            output += "Student: " + rs.getString("Username") + "\nTitle: " + title + "\nTopic: " + topic + "\nSubtopic: " + subtopic + "\nMessages: " + message;
 
         }
         return output;

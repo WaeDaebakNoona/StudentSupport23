@@ -64,13 +64,14 @@ public class StudentManager {
             int id = rs.getInt("StudentId");
             String name = rs.getString("Name");
             String surname = rs.getString("Surname");
-            String grade = rs.getString("Grade");
             String user = rs.getString("Username");
             String pass = rs.getString("Password");
+            String grade = rs.getString("Grade");
+            
 
             if (username.equalsIgnoreCase(user) && password.equals(pass)) {
                 valid = true;
-                currentStudent = new Student(id, name, surname, grade, user, pass);
+                currentStudent = new Student(id, name, surname, pass , grade, user );
                 break;
             }
         }
@@ -78,4 +79,5 @@ public class StudentManager {
         return valid;
     }//end of method
 
+    
 }

@@ -36,8 +36,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
 
-//        ImageIcon image = new ImageIcon("resources/information.png");
-//        iconLabel.setIcon(image);
+
 
         try {
             AppManager.init();//remember only have this on main screen
@@ -60,7 +59,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         //Jlist
         DefaultListModel<String> listModel = new DefaultListModel<>();
         try {
-            listModel.addAll(AppManager.messageManager.getStudentMessages()); //fix
+            listModel.addAll(AppManager.messageManager.getSpecificStudentMessage(AppManager.studentManager.getCurrentStudent().getId())); //fix
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "SQL error");
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -68,7 +67,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         sentMessagesJList.setModel(listModel);
         DefaultListModel<String> listModel1 = new DefaultListModel<>();
         try {
-            listModel1.addAll(AppManager.messageManager.getAdminMessages());
+            listModel1.addAll(AppManager.messageManager.getSpecificAdminMessage(AppManager.studentManager.getCurrentStudent().getId()));
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "SQL error");
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -77,7 +76,7 @@ public class StudentMainUI extends javax.swing.JFrame {
 
         //populate text fields with user's details
         
-        System.out.println(AppManager.studentManager.getCurrentStudent());
+        
         nameTextfield.setText(AppManager.studentManager.getCurrentStudent().getName());
         surnameTextfield.setText(AppManager.studentManager.getCurrentStudent().getSurname());
         usernameTextfield.setText(AppManager.studentManager.getCurrentStudent().getUsername());
@@ -140,7 +139,6 @@ public class StudentMainUI extends javax.swing.JFrame {
         passwordTextfield = new javax.swing.JTextField();
         usernameTextfield = new javax.swing.JTextField();
         gradeTextfield = new javax.swing.JTextField();
-        updateButton = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -438,6 +436,11 @@ public class StudentMainUI extends javax.swing.JFrame {
 
         refreshReceiveScreenButton.setForeground(new java.awt.Color(0, 0, 0));
         refreshReceiveScreenButton.setText("Refresh");
+        refreshReceiveScreenButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                refreshReceiveScreenButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -522,19 +525,10 @@ public class StudentMainUI extends javax.swing.JFrame {
         gradeTextfield.setBackground(new java.awt.Color(255, 255, 255));
         gradeTextfield.setForeground(new java.awt.Color(0, 0, 0));
 
-        updateButton.setBackground(new java.awt.Color(187, 187, 187));
-        updateButton.setForeground(new java.awt.Color(0, 0, 0));
-        updateButton.setText("Update");
-        updateButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateButtonActionPerformed(evt);
-            }
-        });
-
         jLabel14.setFont(new java.awt.Font("Constantia", 3, 24)); // NOI18N
         jLabel14.setText("PROFILE");
 
-        jLabel15.setText("Make changes to your student profile!");
+        jLabel15.setText("View your student profile");
 
         jLabel16.setText("jLabel16");
 
@@ -547,42 +541,34 @@ public class StudentMainUI extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGap(150, 150, 150)
-                            .addComponent(jLabel14))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGap(51, 51, 51)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel10)
-                                .addComponent(jLabel11)
-                                .addComponent(jLabel9)
-                                .addComponent(jLabel12)
-                                .addComponent(jLabel13))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(nameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                .addComponent(surnameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                .addComponent(usernameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                .addComponent(passwordTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                .addComponent(gradeTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel17)
-                            .addGap(17, 17, 17)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(updateButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 110, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addGap(167, 167, 167))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addGap(108, 108, 108))))
+                        .addGap(150, 150, 150)
+                        .addComponent(jLabel14))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(passwordTextfield, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(usernameTextfield, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(surnameTextfield, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nameTextfield, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(gradeTextfield)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(184, 184, 184)
+                        .addComponent(jLabel16))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(jLabel15))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addComponent(jLabel17)))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -591,9 +577,9 @@ public class StudentMainUI extends javax.swing.JFrame {
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel15)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
@@ -614,11 +600,9 @@ public class StudentMainUI extends javax.swing.JFrame {
                             .addComponent(jLabel13)
                             .addComponent(gradeTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel10))
-                .addGap(46, 46, 46)
-                .addComponent(updateButton)
-                .addGap(18, 18, 18)
+                .addGap(51, 51, 51)
                 .addComponent(jLabel17)
-                .addContainerGap())
+                .addGap(42, 42, 42))
         );
 
         jTabbedPane1.addTab("Profile", jPanel4);
@@ -741,15 +725,6 @@ public class StudentMainUI extends javax.swing.JFrame {
         // end of method
     }//GEN-LAST:event_viewButtonActionPerformed
 
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        // TODO add your handling code here:
-        String name = nameTextfield.getText();
-        String surname = surnameTextfield.getText();
-        String username = usernameTextfield.getText();
-        String password = passwordTextfield.getText();
-        String grade = gradeTextfield.getText();
-    }//GEN-LAST:event_updateButtonActionPerformed
-
     private void helpLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpLabelMouseClicked
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "How to work the app: \n" + "1.) Choose a heading and write it in the field labeled 'Header'. \n" + "2.) Write your message in the text area. \n" + "3.) Choose your topic and subtopic that relate to your message. \n" + "4.) Send!\n" + "\n Press Cancel to refresh", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
@@ -797,7 +772,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         m = new Message(topic, subtopic, header, message);
 
         try {
-            AppManager.messageManager.addStudentMessage(m);
+            AppManager.messageManager.addStudentMessage(m, AppManager.studentManager.getCurrentStudent().getId());
             messageInput.setText(" ");
             titleInput.setText(" ");
             JOptionPane.showMessageDialog(null, "Successfully sent!");
@@ -839,25 +814,31 @@ public class StudentMainUI extends javax.swing.JFrame {
         DefaultListModel<String> listModel = new DefaultListModel<>();
         try {
             
-            listModel.addAll(AppManager.messageManager.getStudentMessages()); //fix
+            listModel.addAll(AppManager.messageManager.getSpecificStudentMessage(AppManager.studentManager.getCurrentStudent().getId())); //fix
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "SQL error");
             Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         sentMessagesJList.setModel(listModel);
-        DefaultListModel<String> listModel1 = new DefaultListModel<>();
-        try {
-            listModel1.addAll(AppManager.messageManager.getAdminMessages());
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "SQL error");
-            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }//GEN-LAST:event_refreshSentScreenButtonMouseClicked
 
     private void leaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaveButtonActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_leaveButtonActionPerformed
+
+    private void refreshReceiveScreenButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshReceiveScreenButtonMouseClicked
+        // TODO add your handling code here:
+        DefaultListModel<String> listModel1 = new DefaultListModel<>();
+        try {
+            listModel1.addAll(AppManager.messageManager.getSpecificAdminMessage(AppManager.studentManager.getCurrentStudent().getId()));
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "SQL error");
+            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        receivedJlist.setModel(listModel1);
+    }//GEN-LAST:event_refreshReceiveScreenButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -949,7 +930,6 @@ public class StudentMainUI extends javax.swing.JFrame {
     private javax.swing.JTextField surnameTextfield;
     private javax.swing.JTextField titleInput;
     private javax.swing.JComboBox<String> topicBox;
-    private javax.swing.JButton updateButton;
     private javax.swing.JTextField usernameTextfield;
     private javax.swing.JButton viewButton;
     private javax.swing.JButton viewReceivedButton;
