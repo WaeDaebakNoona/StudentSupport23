@@ -96,7 +96,7 @@ public class StudentManager {
             ResultSet rss = DB.instance.query(messageQuery);
             rss.next();
             
-            output = "\tStudent Information:\n" + "\t----------------------------" + "\nName:" + name + "\nSurname: " + surname + "\nUsername: " + user + "\nGrade: " + grade + "\nTotal Messages sent: " + rss.getInt(1);;
+            output = "\tStudent Information:\n" + "\t--------------------" + "\nName:" + name + "\nSurname: " + surname + "\nUsername: " + user + "\nGrade: " + grade + "\nTotal Messages sent: " + rss.getInt(1);;
 
         }
 

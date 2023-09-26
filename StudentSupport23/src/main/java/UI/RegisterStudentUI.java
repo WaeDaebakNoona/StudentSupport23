@@ -30,13 +30,13 @@ public class RegisterStudentUI extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         
-        try {
-            AppManager.init();//remeber only for testing
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(RegisterStudentUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(RegisterStudentUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            AppManager.init();//remeber only for testing
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(RegisterStudentUI.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(RegisterStudentUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
                 
          DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>();
@@ -72,40 +72,62 @@ public class RegisterStudentUI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         usernameOut = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         jLabel3.setText("Surname:");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(213, 245, 227));
 
         jLabel2.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Name:");
 
+        nameInput.setBackground(new java.awt.Color(187, 187, 187));
+        nameInput.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
+        nameInput.setForeground(new java.awt.Color(0, 0, 0));
         nameInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameInputActionPerformed(evt);
             }
         });
 
+        surnameInput.setBackground(new java.awt.Color(187, 187, 187));
+        surnameInput.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
+        surnameInput.setForeground(new java.awt.Color(0, 0, 0));
         surnameInput.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 surnameInputKeyReleased(evt);
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Grade:");
 
+        gradeInput.setBackground(new java.awt.Color(187, 187, 187));
+        gradeInput.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
+        gradeInput.setForeground(new java.awt.Color(0, 0, 0));
         gradeInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        passwordInput.setBackground(new java.awt.Color(187, 187, 187));
+        passwordInput.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
+        passwordInput.setForeground(new java.awt.Color(0, 0, 0));
         passwordInput.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 passwordInputKeyTyped(evt);
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Create a password:");
 
+        signupButton.setBackground(new java.awt.Color(187, 187, 187));
+        signupButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        signupButton.setForeground(new java.awt.Color(0, 0, 0));
         signupButton.setText("Sign-up");
         signupButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +135,8 @@ public class RegisterStudentUI extends javax.swing.JFrame {
             }
         });
 
+        backButton.setBackground(new java.awt.Color(200, 200, 200));
+        backButton.setForeground(new java.awt.Color(0, 0, 0));
         backButton.setText("<");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,9 +144,23 @@ public class RegisterStudentUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Surname:");
 
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Your username is:");
+
+        usernameOut.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel1.setFont(new java.awt.Font("Constantia", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("i");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -161,25 +199,29 @@ public class RegisterStudentUI extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(163, 163, 163))
+                                .addComponent(jLabel2)
+                                .addGap(201, 201, 201))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
-                                .addGap(194, 194, 194))))
+                                .addGap(187, 187, 187))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(backButton)
-                        .addGap(23, 421, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(19, 19, 19))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(201, 201, 201))
+                .addComponent(jLabel5)
+                .addGap(157, 157, 157))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addComponent(backButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backButton)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(nameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -187,9 +229,9 @@ public class RegisterStudentUI extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(surnameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -267,6 +309,11 @@ public class RegisterStudentUI extends javax.swing.JFrame {
         new StudentLoginUI().setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Add all of the required details into the boxes\n" + "make sure to remember your username and password", "INFORMATION",JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -306,6 +353,7 @@ public class RegisterStudentUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JComboBox<String> gradeInput;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

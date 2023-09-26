@@ -38,13 +38,13 @@ public class StudentMainUI extends javax.swing.JFrame {
 
 
 
-        try {
-            AppManager.init();//remember only have this on main screen
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            AppManager.init();//remember only have this on main screen
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(StudentMainUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
         //combo boxes topic
         String[] topics = {"Academics", "Facilities", "Teachers", "Red deli", "Students"};
@@ -52,7 +52,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         topicBox.setModel(comboModel);
 
         //subtopic
-        String[] subAcademic = {"Time management", "Other"};
+        String[] subAcademic = {"English", "Afrikaans","Mathematics","Life Orientation","Time management", "Other"};
         DefaultComboBoxModel<String> comboModelA = new DefaultComboBoxModel<String>(subAcademic);
         subtopicCombobox.setModel(comboModelA);
 
@@ -101,7 +101,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         messageInput = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cancelButton = new javax.swing.JButton();
+        clearButton = new javax.swing.JButton();
         sendButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         topicBox = new javax.swing.JComboBox<>();
@@ -156,6 +156,7 @@ public class StudentMainUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(193, 173, 178));
+        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -183,13 +184,13 @@ public class StudentMainUI extends javax.swing.JFrame {
             }
         });
 
-        cancelButton.setBackground(new java.awt.Color(187, 187, 187));
-        cancelButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
-        cancelButton.setForeground(new java.awt.Color(0, 0, 0));
-        cancelButton.setText("Cancel");
-        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+        clearButton.setBackground(new java.awt.Color(187, 187, 187));
+        clearButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        clearButton.setForeground(new java.awt.Color(0, 0, 0));
+        clearButton.setText("clear");
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelButtonActionPerformed(evt);
+                clearButtonActionPerformed(evt);
             }
         });
 
@@ -250,7 +251,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         jLabel18.setText("on an array of topics with their subtopics by crafting your own messages to ");
 
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel19.setText("send to the Student Support Counil");
+        jLabel19.setText("send to the Student Support Council");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -279,7 +280,7 @@ public class StudentMainUI extends javax.swing.JFrame {
                                             .addComponent(subtopicCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel8)
                                             .addComponent(jLabel5)
-                                            .addComponent(cancelButton)
+                                            .addComponent(clearButton)
                                             .addComponent(sendButton)))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
@@ -325,7 +326,7 @@ public class StudentMainUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cancelButton)
+                        .addComponent(clearButton)
                         .addGap(22, 22, 22)
                         .addComponent(sendButton))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -346,10 +347,12 @@ public class StudentMainUI extends javax.swing.JFrame {
         });
 
         sentMessagesJList.setBackground(new java.awt.Color(255, 255, 255));
+        sentMessagesJList.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         sentMessagesJList.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane2.setViewportView(sentMessagesJList);
 
         viewButton.setBackground(new java.awt.Color(187, 187, 187));
+        viewButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         viewButton.setForeground(new java.awt.Color(0, 0, 0));
         viewButton.setText("VIEW");
         viewButton.addActionListener(new java.awt.event.ActionListener() {
@@ -375,8 +378,10 @@ public class StudentMainUI extends javax.swing.JFrame {
             }
         });
 
+        sentTextArea.setEditable(false);
         sentTextArea.setBackground(new java.awt.Color(255, 255, 255));
         sentTextArea.setColumns(20);
+        sentTextArea.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         sentTextArea.setForeground(new java.awt.Color(0, 0, 0));
         sentTextArea.setRows(5);
         jScrollPane4.setViewportView(sentTextArea);
@@ -408,7 +413,7 @@ public class StudentMainUI extends javax.swing.JFrame {
                     .addComponent(iconLabel2)
                     .addComponent(refreshSentScreenButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -433,12 +438,14 @@ public class StudentMainUI extends javax.swing.JFrame {
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         receivedJlist.setBackground(new java.awt.Color(255, 255, 255));
+        receivedJlist.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         receivedJlist.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane3.setViewportView(receivedJlist);
 
-        jPanel6.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 406, 149));
+        jPanel6.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 400, 149));
 
         viewReceivedButton.setBackground(new java.awt.Color(187, 187, 187));
+        viewReceivedButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         viewReceivedButton.setForeground(new java.awt.Color(0, 0, 0));
         viewReceivedButton.setText("VIEW");
         viewReceivedButton.addActionListener(new java.awt.event.ActionListener() {
@@ -446,7 +453,7 @@ public class StudentMainUI extends javax.swing.JFrame {
                 viewReceivedButtonActionPerformed(evt);
             }
         });
-        jPanel6.add(viewReceivedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, -1, -1));
+        jPanel6.add(viewReceivedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, -1, -1));
 
         iconLabel1.setFont(new java.awt.Font("Constantia", 1, 18)); // NOI18N
         iconLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -456,7 +463,7 @@ public class StudentMainUI extends javax.swing.JFrame {
                 iconLabel1MouseClicked(evt);
             }
         });
-        jPanel6.add(iconLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 1, 10, 30));
+        jPanel6.add(iconLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 10, 30));
 
         refreshReceiveScreenButton.setForeground(new java.awt.Color(0, 0, 0));
         refreshReceiveScreenButton.setText("Refresh");
@@ -465,15 +472,17 @@ public class StudentMainUI extends javax.swing.JFrame {
                 refreshReceiveScreenButtonMouseClicked(evt);
             }
         });
-        jPanel6.add(refreshReceiveScreenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, -1, -1));
+        jPanel6.add(refreshReceiveScreenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
+        receivedTextArea.setEditable(false);
         receivedTextArea.setBackground(new java.awt.Color(255, 255, 255));
         receivedTextArea.setColumns(20);
+        receivedTextArea.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         receivedTextArea.setForeground(new java.awt.Color(0, 0, 0));
         receivedTextArea.setRows(5);
         jScrollPane5.setViewportView(receivedTextArea);
 
-        jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 406, 166));
+        jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 200, 400, 166));
 
         jTabbedPane2.addTab("Received", jPanel6);
 
@@ -527,7 +536,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         gradeTextfield.setBackground(new java.awt.Color(255, 255, 255));
         gradeTextfield.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel14.setFont(new java.awt.Font("Constantia", 3, 24)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Constantia", 3, 36)); // NOI18N
         jLabel14.setText("PROFILE");
 
         jLabel15.setText("View your student profile");
@@ -541,9 +550,6 @@ public class StudentMainUI extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jLabel14))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -560,21 +566,26 @@ public class StudentMainUI extends javax.swing.JFrame {
                             .addComponent(nameTextfield, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(gradeTextfield)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(jLabel15))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(jLabel17)))
+                        .addGap(137, 137, 137)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addGap(8, 8, 8)))))
                 .addContainerGap(93, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel17)
+                .addGap(143, 143, 143))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
@@ -595,9 +606,9 @@ public class StudentMainUI extends javax.swing.JFrame {
                             .addComponent(jLabel13)
                             .addComponent(gradeTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel10))
-                .addGap(51, 51, 51)
+                .addGap(76, 76, 76)
                 .addComponent(jLabel17)
-                .addGap(42, 42, 42))
+                .addGap(17, 17, 17))
         );
 
         jTabbedPane1.addTab("Profile", jPanel4);
@@ -605,6 +616,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(239, 237, 231));
 
         leaveButton.setBackground(new java.awt.Color(200, 200, 196));
+        leaveButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         leaveButton.setForeground(new java.awt.Color(0, 0, 0));
         leaveButton.setText("Exit");
         leaveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -654,12 +666,12 @@ public class StudentMainUI extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel22)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(leaveButton)
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jLabel23))
-                            .addComponent(leaveButton))))
+                                .addComponent(jLabel23)))))
                 .addGap(146, 146, 146))
         );
         jPanel8Layout.setVerticalGroup(
@@ -677,7 +689,7 @@ public class StudentMainUI extends javax.swing.JFrame {
                 .addComponent(leaveButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel23)
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Exit", jPanel8);
@@ -721,7 +733,7 @@ public class StudentMainUI extends javax.swing.JFrame {
 
     private void helpLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpLabelMouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "How to work the app: \n" + "1.) Choose a heading and write it in the field labeled 'Header'. \n" + "2.) Write your message in the text area. \n" + "3.) Choose your topic and subtopic that relate to your message. \n" + "4.) Send!\n" + "\n Press Cancel to refresh", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "How to work the app: \n" + "1.) Choose a heading and write it in the field labeled 'Header'. \n" + "2.) Write your message in the text area. \n" + "3.) Choose your topic and subtopic that relate to your message. \n" + "4.) Send!\n" + "\nPress Clear to refresh" + "\nPlease do not use any form of quotation" + "\nmarks in both your title and message :)", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
         // component - text - title
     }//GEN-LAST:event_helpLabelMouseClicked
 
@@ -778,12 +790,12 @@ public class StudentMainUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_sendButtonActionPerformed
 
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         // TODO add your handling code here:
         messageInput.setText(" ");
         titleInput.setText(" ");
 
-    }//GEN-LAST:event_cancelButtonActionPerformed
+    }//GEN-LAST:event_clearButtonActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
@@ -887,7 +899,7 @@ public class StudentMainUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonTopicGroup;
-    private javax.swing.JButton cancelButton;
+    private javax.swing.JButton clearButton;
     private javax.swing.JTextField gradeTextfield;
     private javax.swing.JLabel helpLabel;
     private javax.swing.JLabel iconLabel1;

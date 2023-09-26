@@ -37,13 +37,13 @@ public class AdminMainUI extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
 
-        try {
-            AppManager.init();//remeber only main
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            AppManager.init();//remeber only main
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AdminMainUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
         DefaultListModel<String> listModel = new DefaultListModel<>();
         //populate jlist with admin messages
@@ -134,10 +134,7 @@ public class AdminMainUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         textArea = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         totalMessagesOutput = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         academicText = new javax.swing.JTextField();
@@ -149,6 +146,9 @@ public class AdminMainUI extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         studentsText = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        adminTextArea = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
@@ -159,6 +159,7 @@ public class AdminMainUI extends javax.swing.JFrame {
         clearButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         studentComboBox = new javax.swing.JComboBox<>();
+        labelll = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         sentJlist = new javax.swing.JList<>();
@@ -193,6 +194,8 @@ public class AdminMainUI extends javax.swing.JFrame {
         exitButton = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -223,22 +226,10 @@ public class AdminMainUI extends javax.swing.JFrame {
         jLabel6.setText("Notes:");
         jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 32383, -1, -1));
 
-        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea1.setRows(5);
-        jScrollPane7.setViewportView(jTextArea1);
-
-        jPanel4.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 301, 120));
-
         totalMessagesOutput.setEditable(false);
         totalMessagesOutput.setBackground(new java.awt.Color(255, 255, 255));
         totalMessagesOutput.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(totalMessagesOutput, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, -1));
-
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Notes:");
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Facilities:");
@@ -292,15 +283,32 @@ public class AdminMainUI extends javax.swing.JFrame {
         jLabel14.setText("ADMINISTRATOR DASHBOARD");
         jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, 60));
 
+        jLabel18.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("Number of messages according to topics:");
+        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+
+        jScrollPane7.setForeground(new java.awt.Color(0, 0, 0));
+
+        adminTextArea.setEditable(false);
+        adminTextArea.setBackground(new java.awt.Color(255, 255, 255));
+        adminTextArea.setColumns(20);
+        adminTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        adminTextArea.setRows(5);
+        adminTextArea.setText(" Some quotes that will hopefully motivate and inspire you:\n---------------------------------------------------------------\n“To infinity and beyond!” -Toy Story, 1995\n\"We can't help everyone, but everyone can help someone\" -\n\"Do your little bit of good where you are; it's those little bits\nof good put together that overwhelm the worl\" - Desmond\nTutu\n\"No matter what people tell you, words and ideas can \nchange the world.\" - Robin Williams\n\"You improve on everything; you're never perfect\" - Max\nVerstappen\n\n\n");
+        jScrollPane7.setViewportView(adminTextArea);
+
+        jPanel4.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 360, 270));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 432, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 433, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Dashboard", jPanel2);
@@ -318,6 +326,7 @@ public class AdminMainUI extends javax.swing.JFrame {
         jScrollPane2.setViewportView(messageInput);
 
         sendButton.setBackground(new java.awt.Color(187, 187, 187));
+        sendButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         sendButton.setForeground(new java.awt.Color(0, 0, 0));
         sendButton.setText("Send");
         sendButton.addActionListener(new java.awt.event.ActionListener() {
@@ -327,6 +336,7 @@ public class AdminMainUI extends javax.swing.JFrame {
         });
 
         clearButton.setBackground(new java.awt.Color(187, 187, 187));
+        clearButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         clearButton.setForeground(new java.awt.Color(0, 0, 0));
         clearButton.setText("Clear");
         clearButton.addActionListener(new java.awt.event.ActionListener() {
@@ -340,6 +350,15 @@ public class AdminMainUI extends javax.swing.JFrame {
 
         studentComboBox.setBackground(new java.awt.Color(255, 255, 255));
         studentComboBox.setForeground(new java.awt.Color(0, 0, 0));
+
+        labelll.setFont(new java.awt.Font("Constantia", 0, 24)); // NOI18N
+        labelll.setForeground(new java.awt.Color(0, 0, 0));
+        labelll.setText("i");
+        labelll.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelllMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -358,11 +377,17 @@ public class AdminMainUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(studentComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(71, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelll)
+                .addGap(18, 18, 18))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
+                .addComponent(labelll)
+                .addGap(2, 2, 2)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(studentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -372,7 +397,7 @@ public class AdminMainUI extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(sendButton)
                     .addComponent(clearButton))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Reply", jPanel7);
@@ -380,10 +405,12 @@ public class AdminMainUI extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(193, 171, 173));
 
         sentJlist.setBackground(new java.awt.Color(255, 255, 255));
+        sentJlist.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         sentJlist.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane3.setViewportView(sentJlist);
 
         viewButton.setBackground(new java.awt.Color(187, 187, 187));
+        viewButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         viewButton.setForeground(new java.awt.Color(0, 0, 0));
         viewButton.setText("VIEW");
         viewButton.addActionListener(new java.awt.event.ActionListener() {
@@ -402,6 +429,7 @@ public class AdminMainUI extends javax.swing.JFrame {
 
         sentTextArea.setBackground(new java.awt.Color(255, 255, 255));
         sentTextArea.setColumns(20);
+        sentTextArea.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         sentTextArea.setForeground(new java.awt.Color(0, 0, 0));
         sentTextArea.setRows(5);
         jScrollPane8.setViewportView(sentTextArea);
@@ -440,10 +468,12 @@ public class AdminMainUI extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(193, 171, 173));
 
         receivedJlist.setBackground(new java.awt.Color(255, 255, 255));
+        receivedJlist.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         receivedJlist.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane4.setViewportView(receivedJlist);
 
         viewReceivedButton.setBackground(new java.awt.Color(187, 187, 187));
+        viewReceivedButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         viewReceivedButton.setForeground(new java.awt.Color(0, 0, 0));
         viewReceivedButton.setText("VIEW");
         viewReceivedButton.addActionListener(new java.awt.event.ActionListener() {
@@ -462,6 +492,7 @@ public class AdminMainUI extends javax.swing.JFrame {
 
         receivedTextArea.setBackground(new java.awt.Color(255, 255, 255));
         receivedTextArea.setColumns(20);
+        receivedTextArea.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         receivedTextArea.setForeground(new java.awt.Color(0, 0, 0));
         receivedTextArea.setRows(5);
         jScrollPane9.setViewportView(receivedTextArea);
@@ -525,7 +556,7 @@ public class AdminMainUI extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 426, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 427, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -537,16 +568,19 @@ public class AdminMainUI extends javax.swing.JFrame {
         jLabel1.setText("Concern catagory:");
 
         topicCombo.setBackground(new java.awt.Color(187, 187, 187));
+        topicCombo.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         topicCombo.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Sort by topic:");
 
         statsJlist.setBackground(new java.awt.Color(255, 255, 255));
+        statsJlist.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         statsJlist.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane6.setViewportView(statsJlist);
 
         statsViewButton.setBackground(new java.awt.Color(187, 187, 187));
+        statsViewButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         statsViewButton.setForeground(new java.awt.Color(0, 0, 0));
         statsViewButton.setText("VIEW");
         statsViewButton.addActionListener(new java.awt.event.ActionListener() {
@@ -556,6 +590,7 @@ public class AdminMainUI extends javax.swing.JFrame {
         });
 
         searchButton.setBackground(new java.awt.Color(187, 187, 187));
+        searchButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         searchButton.setForeground(new java.awt.Color(0, 0, 0));
         searchButton.setText("search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -602,7 +637,7 @@ public class AdminMainUI extends javax.swing.JFrame {
                         .addComponent(topicCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(searchButton)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(statsViewButton)
                 .addGap(22, 22, 22))
@@ -615,11 +650,13 @@ public class AdminMainUI extends javax.swing.JFrame {
         studentInfoTextArea.setEditable(false);
         studentInfoTextArea.setBackground(new java.awt.Color(255, 255, 255));
         studentInfoTextArea.setColumns(20);
+        studentInfoTextArea.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         studentInfoTextArea.setForeground(new java.awt.Color(0, 0, 0));
         studentInfoTextArea.setRows(5);
         jScrollPane5.setViewportView(studentInfoTextArea);
 
         searchStudentButton.setBackground(new java.awt.Color(187, 187, 187));
+        searchStudentButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         searchStudentButton.setForeground(new java.awt.Color(0, 0, 0));
         searchStudentButton.setText("Search");
         searchStudentButton.addActionListener(new java.awt.event.ActionListener() {
@@ -629,6 +666,7 @@ public class AdminMainUI extends javax.swing.JFrame {
         });
 
         studentsCombo.setBackground(new java.awt.Color(255, 255, 255));
+        studentsCombo.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         studentsCombo.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel3.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
@@ -677,7 +715,7 @@ public class AdminMainUI extends javax.swing.JFrame {
                     .addComponent(studentsCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Search Student", jPanel10);
@@ -691,6 +729,7 @@ public class AdminMainUI extends javax.swing.JFrame {
         jLabel13.setText("Help those in need");
 
         exitButton.setBackground(new java.awt.Color(187, 187, 187));
+        exitButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         exitButton.setForeground(new java.awt.Color(0, 0, 0));
         exitButton.setText("Exit");
         exitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -707,24 +746,38 @@ public class AdminMainUI extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("to others during their time of need");
 
+        jLabel7.setFont(new java.awt.Font("Constantia", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("NEVER BACK DOWN NEVER WHAT?");
+
+        jLabel19.setFont(new java.awt.Font("Constantia", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel19.setText("NEVER GIVE UP!");
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel7)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addGap(99, 99, 99)
+                                .addComponent(jLabel13))
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addComponent(jLabel16))
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(jLabel17))))
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jLabel13))
+                        .addGap(126, 126, 126)
+                        .addComponent(jLabel19))
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel17))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(exitButton))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jLabel16)))
+                        .addGap(135, 135, 135)
+                        .addComponent(exitButton)))
                 .addContainerGap(93, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
@@ -732,13 +785,17 @@ public class AdminMainUI extends javax.swing.JFrame {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addComponent(jLabel13)
-                .addGap(42, 42, 42)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
                 .addComponent(exitButton)
-                .addGap(83, 83, 83))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel19)
+                .addGap(44, 44, 44))
         );
 
         jTabbedPane1.addTab("Exit", jPanel11);
@@ -888,6 +945,11 @@ public class AdminMainUI extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_exitButtonActionPerformed
 
+    private void labelllMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelllMouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Please do not use any form of quotation" + "\nmarks in any message/header inputs", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_labelllMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -925,6 +987,7 @@ public class AdminMainUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField academicText;
+    private javax.swing.JTextArea adminTextArea;
     private javax.swing.JButton clearButton;
     private javax.swing.JButton exitButton;
     private javax.swing.JTextField facilitiesText;
@@ -937,6 +1000,8 @@ public class AdminMainUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -967,7 +1032,7 @@ public class AdminMainUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel labelll;
     private javax.swing.JTextArea messageInput;
     private javax.swing.JList<String> receivedJlist;
     private javax.swing.JTextArea receivedTextArea;

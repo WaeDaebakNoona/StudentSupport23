@@ -25,13 +25,13 @@ public class StudentLoginUI extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
 
-        try {
-            AppManager.init();//only for testing. only have this in starting screen
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(StudentLoginUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(StudentLoginUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            AppManager.init();//only for testing. only have this in starting screen
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(StudentLoginUI.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(StudentLoginUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
     }//end of constructo
 
@@ -65,6 +65,7 @@ public class StudentLoginUI extends javax.swing.JFrame {
         jPanel1.add(profileIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 79, -1, -1));
 
         usernameInput.setBackground(new java.awt.Color(255, 255, 255));
+        usernameInput.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         usernameInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameInputActionPerformed(evt);
@@ -107,6 +108,7 @@ public class StudentLoginUI extends javax.swing.JFrame {
         jPanel1.add(signupButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 294, -1, -1));
 
         passwordInput.setBackground(new java.awt.Color(255, 255, 255));
+        passwordInput.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         passwordInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordInputActionPerformed(evt);

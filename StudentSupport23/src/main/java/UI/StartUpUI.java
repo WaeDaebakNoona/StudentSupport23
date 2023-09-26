@@ -70,6 +70,7 @@ public class StartUpUI extends javax.swing.JFrame {
         jLabel2.setText("STUDENT SUPPORT");
 
         studentButton.setBackground(new java.awt.Color(200, 200, 200));
+        studentButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         studentButton.setForeground(new java.awt.Color(0, 0, 0));
         studentButton.setText("Student");
         studentButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -80,6 +81,7 @@ public class StartUpUI extends javax.swing.JFrame {
         });
 
         adminButton.setBackground(new java.awt.Color(200, 200, 200));
+        adminButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         adminButton.setForeground(new java.awt.Color(0, 0, 0));
         adminButton.setText("Administrator");
         adminButton.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +190,7 @@ public class StartUpUI extends javax.swing.JFrame {
                         .addComponent(backButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(23, Short.MAX_VALUE)
+                        .addContainerGap(27, Short.MAX_VALUE)
                         .addComponent(jLabel10)
                         .addGap(18, 18, 18)))
                 .addComponent(jLabel2)
