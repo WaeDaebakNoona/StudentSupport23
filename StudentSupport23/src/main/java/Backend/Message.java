@@ -10,29 +10,28 @@ package Backend;
  */
 public class Message {
     
-    private String user;
+//    private String user;
     private String topic;
     private String note;
     private String header;
     private String subTopic;
     
-    //for student
-//String currUser,
-    public Message( String topic, String sub, String head, String note) {
-        //user = currUser;
-        this.topic = topic;
-        this.note = note;
-        header = head;
-        subTopic = sub;
+    
+    public Message( String inT, String inS, String inH, String inN) {
+        
+        this.topic = inT;
+        this.note = inN;
+        header = inH;
+        subTopic = inS;
     }
 
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
+//    public String getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(String user) {
+//        this.user = user;
+//    }
     
     public String getTopic() {
         return topic;

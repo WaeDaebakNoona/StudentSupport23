@@ -52,7 +52,7 @@ public class StudentMainUI extends javax.swing.JFrame {
         topicBox.setModel(comboModel);
 
         //subtopic
-        String[] subAcademic = {"English", "Afrikaans","Mathematics","Life Orientation","Time management", "Other"};
+        String[] subAcademic = {"Subject","Time management", "Other"};
         DefaultComboBoxModel<String> comboModelA = new DefaultComboBoxModel<String>(subAcademic);
         subtopicCombobox.setModel(comboModelA);
 
@@ -744,15 +744,15 @@ public class StudentMainUI extends javax.swing.JFrame {
     private void topicBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topicBoxActionPerformed
         // TODO add your handling code here:
         if (topicBox.getSelectedItem().equals("Academics")) {
-            String[] subAcademic = {"Time management", "Other"};
+            String[] subAcademic = {"Subject","Time management", "Other"};
             DefaultComboBoxModel<String> comboModelA = new DefaultComboBoxModel<String>(subAcademic);
             subtopicCombobox.setModel(comboModelA);
         } else if (topicBox.getSelectedItem().equals("Facilities")) {
-            String[] subFacilities = {"Bathrooms", " Classrooms", "Hallways", " Other"};
+            String[] subFacilities = {"Bathrooms", "Classrooms", "Hallways", "Fields", "Other"};
             DefaultComboBoxModel<String> comboModel0A = new DefaultComboBoxModel<String>(subFacilities);
             subtopicCombobox.setModel(comboModel0A);
         } else if (topicBox.getSelectedItem().equals("Teachers")) {
-            String[] subTeachers = {"Mr B", "Mr Smee", " Mrs Bigara", " Mrs Jacobs"};
+            String[] subTeachers = {"Mr B", "Mr Smee", "Mrs Bigara", "Mrs Jacobs", "Mrs Hoffman", "Juff. Diks", "Juff. Swart", "Mrs BB", "Other"};
             DefaultComboBoxModel<String> comboModelAs = new DefaultComboBoxModel<String>(subTeachers);
             subtopicCombobox.setModel(comboModelAs);
         } else if (topicBox.getSelectedItem().equals("Red deli")) {
