@@ -85,7 +85,7 @@ public class RegisterStudentUI extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Name:");
 
-        nameInput.setBackground(new java.awt.Color(187, 187, 187));
+        nameInput.setBackground(new java.awt.Color(255, 255, 255));
         nameInput.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         nameInput.setForeground(new java.awt.Color(0, 0, 0));
         nameInput.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +94,7 @@ public class RegisterStudentUI extends javax.swing.JFrame {
             }
         });
 
-        surnameInput.setBackground(new java.awt.Color(187, 187, 187));
+        surnameInput.setBackground(new java.awt.Color(255, 255, 255));
         surnameInput.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         surnameInput.setForeground(new java.awt.Color(0, 0, 0));
         surnameInput.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -112,7 +112,7 @@ public class RegisterStudentUI extends javax.swing.JFrame {
         gradeInput.setForeground(new java.awt.Color(0, 0, 0));
         gradeInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        passwordInput.setBackground(new java.awt.Color(187, 187, 187));
+        passwordInput.setBackground(new java.awt.Color(255, 255, 255));
         passwordInput.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         passwordInput.setForeground(new java.awt.Color(0, 0, 0));
         passwordInput.addKeyListener(new java.awt.event.KeyAdapter() {
